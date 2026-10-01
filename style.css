@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+#header-home {
+    display: flex;
+    text-align: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-home {
+    display: flex;
+    text-align: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
