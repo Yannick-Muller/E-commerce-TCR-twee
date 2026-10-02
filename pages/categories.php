@@ -5,18 +5,12 @@ include "../includes/header.php";
 include "../includes/nav.php";
 ?>
 
-<main>
-    <section>
+<main class="categories">
+    <aside class="categories__sidebar">
         <p>New Arrivals</p>
         <h2>New Ins</h2>
-        <ul>
-            <h3>Feature</h3>
-            <li><a href="">Text</a></li>
-            <li><a href="">Text</a></li>
-            <li><a href="">Text</a></li>
-            <li><a href="">Text</a></li>
-        </ul>
-        <ul>
+
+        <ul class="categories__list">
             <h3>Feature</h3>
             <li><a href="">Text</a></li>
             <li><a href="">Text</a></li>
@@ -24,10 +18,18 @@ include "../includes/nav.php";
             <li><a href="">Text</a></li>
         </ul>
 
-        <div>
+        <ul class="categories__list">
+            <h3>Shop category</h3>
+            <li><a href="">Text</a></li>
+            <li><a href="">Text</a></li>
+            <li><a href="">Text</a></li>
+            <li><a href="">Text</a></li>
+        </ul>
+
+        <div class="categories__filter">
             <p>Filter (0)</p>
             <p>size</p>
-            <div>
+            <div class="categories__sizes">
                 <p>1</p>
                 <p>2</p>
                 <p>3</p>
@@ -40,15 +42,71 @@ include "../includes/nav.php";
                 <p>10</p>
             </div>
         </div>
-    </section>
-    <section>
-        <article>
-            <div>
-                <img src="" alt="">
+    </aside>
+    <section class="categories__products">
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
             </div>
-            <span>Titel</span>
-            <p>Text</p>
-            <p>€</p>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
+        </article>
+        <article class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="../assets/img/placeholder-img.png" alt="">
+            </div>
+            <h3>Titel</h3>
+            <p class="product-card__description">iipsumipsumipsumipsumipsumipsumipsumipsumpsumiipsumipsumipsumipsumipsumipsumipsumipsumpsum dolor sit amet consectetur adipisicing elit. Modi cupiditate voluptatem enim , </p>
+            <span class="product-card__price">€23</span>
         </article>
     </section>
 </main>
