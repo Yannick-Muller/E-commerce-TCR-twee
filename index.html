@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Webshop</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- =====================================================
+             NAVIGATIE
+             ===================================================== -->
+
+      <nav class="navbar">
+        <a href="#home" class="nav-link active"> Home </a>
+
+        <a href="#shop" class="nav-link"> Shop </a>
+
+        <a href="#about" class="nav-link"> About </a>
+
+        <a href="#help" class="nav-link"> Help </a>
+      </nav>
+
+      <!-- =====================================================
+             LOGO
+             ===================================================== -->
+
+      <header class="header" id="home">
+        <div class="logo">
+          <img src="images/logo.png" alt="Logo van de webshop" />
+        </div>
+      </header>
+
+      <main>
+        <!-- =================================================
+                 ZOEKBALK
+                 ================================================= -->
+
+        <section class="search-section">
+          <div class="search-box">
+            <span class="search-icon"> 🔍 </span>
+
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Zoek producten..."
+            />
+          </div>
+        </section>
+
+        <!-- =================================================
+                 CATEGORIEËN
+                 ================================================= -->
+
+        <section class="section" id="shop">
+          <div class="section-header">
+            <h2>Categorieën</h2>
+
+            <button class="view-all" id="show-all-categories">
+              Bekijk alles →
+            </button>
+          </div>
+
+          <div class="categories">
+            <!-- Schoenen -->
+            <button class="category-card" data-category="schoenen">
+              <div class="category-image">
+                <img src="images/category-shoes.png" alt="Schoenen" />
+              </div>
+
+              <span> Schoenen </span>
+            </button>
+
+            <!-- Kleding -->
+            <button class="category-card" data-category="kleding">
+              <div class="category-image">
+                <img src="images/category-clothing.png" alt="Kleding" />
+              </div>
+
+              <span> Kleding </span>
+            </button>
+
+            <!-- Accessoires -->
+            <button class="category-card" data-category="accessoires">
+              <div class="category-image">
+                <img src="images/category-accessories.png" alt="Accessoires" />
+              </div>
+
+              <span> Accessoires </span>
+            </button>
+
+            <!-- Elektronica -->
+            <button class="category-card" data-category="elektronica">
+              <div class="category-image">
+                <img src="images/category-electronics.png" alt="Elektronica" />
+              </div>
+
+              <span> Elektronica </span>
+            </button>
+          </div>
+        </section>
+
+        <!-- =================================================
+                 PRODUCTEN
+                 ================================================= -->
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Populaire producten</h2>
+
+            <button class="view-all" id="show-all-products">
+              Bekijk alles →
+            </button>
+          </div>
+
+          <div class="products" id="products">
+            <!-- =========================================
+                         PRODUCT 1
+                         ========================================= -->
+
+            <article
+              class="product-card"
+              data-name="Sneakers"
+              data-category="schoenen"
+            >
+              <div class="product-image">
+                <img src="images/sneakers.jpg" alt="Sneakers" />
+
+                <button
+                  class="favorite-button"
+                  aria-label="Voeg Sneakers toe aan favorieten"
+                >
+                  ♡
+                </button>
+              </div>
+
+              <h3 class="product-name">Sneakers</h3>
+
+              <p class="product-price">€ 69,99</p>
+
+              <button class="cart-button">In winkelwagen</button>
+            </article>
+
+            <!-- =========================================
+                         PRODUCT 2
+                         ========================================= -->
+
+            <article
+              class="product-card"
+              data-name="T-shirt"
+              data-category="kleding"
+            >
+              <div class="product-image">
+                <img src="images/tshirt.jpg" alt="T-shirt" />
+
+                <button
+                  class="favorite-button"
+                  aria-label="Voeg T-shirt toe aan favorieten"
+                >
+                  ♡
+                </button>
+              </div>
+
+              <h3 class="product-name">T-shirt</h3>
+
+              <p class="product-price">€ 24,99</p>
+
+              <button class="cart-button">In winkelwagen</button>
+            </article>
+
+            <!-- =========================================
+                         PRODUCT 3
+                         ========================================= -->
+
+            <article
+              class="product-card"
+              data-name="Tas"
+              data-category="accessoires"
+            >
+              <div class="product-image">
+                <img src="images/bag.jpg" alt="Tas" />
+
+                <button
+                  class="favorite-button"
+                  aria-label="Voeg Tas toe aan favorieten"
+                >
+                  ♡
+                </button>
+              </div>
+
+              <h3 class="product-name">Tas</h3>
+
+              <p class="product-price">€ 39,99</p>
+
+              <button class="cart-button">In winkelwagen</button>
+            </article>
+
+            <!-- =========================================
+                         PRODUCT 4
+                         ========================================= -->
+
+            <article
+              class="product-card"
+              data-name="Koptelefoon"
+              data-category="elektronica"
+            >
+              <div class="product-image">
+                <img src="images/headphones.jpg" alt="Koptelefoon" />
+
+                <button
+                  class="favorite-button"
+                  aria-label="Voeg Koptelefoon toe aan favorieten"
+                >
+                  ♡
+                </button>
+              </div>
+
+              <h3 class="product-name">Koptelefoon</h3>
+
+              <p class="product-price">€ 89,99</p>
+
+              <button class="cart-button">In winkelwagen</button>
+            </article>
+          </div>
+
+          <!-- Wordt zichtbaar als zoeken niets oplevert -->
+          <p id="no-results" class="no-results hidden">
+            Geen producten gevonden.
+          </p>
+        </section>
+
+        <!-- =================================================
+                 NIEUWE COLLECTIE
+                 ================================================= -->
+
+        <section class="collection-banner">
+          <div class="collection-text">
+            <h2>Nieuwe collectie</h2>
+
+            <p>Bekijk onze nieuwste items</p>
+
+            <button class="shop-button" id="shop-now-button">Shop nu</button>
+          </div>
+
+          <div class="collection-image">
+            <img src="images/new-collection.jpg" alt="Nieuwe collectie" />
+          </div>
+        </section>
+
+        <!-- =================================================
+                 ABOUT
+                 ================================================= -->
+
+        <section class="information-section" id="about">
+          <h2>About</h2>
+
+          <p>
+            Welkom bij onze webshop. Bekijk onze nieuwste producten en
+            collecties.
+          </p>
+        </section>
+
+        <!-- =================================================
+                 HELP
+                 ================================================= -->
+
+        <section class="information-section" id="help">
+          <h2>Help</h2>
+
+          <p>
+            Heb je hulp nodig met een bestelling? Neem dan contact met ons op.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <!-- JavaScript helemaal onderaan laden -->
+    <script src="script.js"></script>
+  </body>
+</html>
