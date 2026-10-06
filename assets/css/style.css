@@ -308,3 +308,1040 @@ main{
         overflow-y: visible;
     }
 }
+
+
+
+/* =========================================================
+   ALGEMENE BASIS  Nikan HOME PAGE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background-color: #f2f2f2;
+
+    color: #111111;
+}
+
+
+/* De volledige website */
+.app {
+    width: 100%;
+
+    min-height: 100vh;
+
+    background-color: #ffffff;
+}
+
+
+/* =========================================================
+   NAVIGATIE
+   ========================================================= */
+
+.navbar {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    width: 100%;
+
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 60px;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.nav-link {
+    position: relative;
+
+    padding: 20px 10px 17px;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.nav-link:hover {
+    color: #555555;
+}
+
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+
+/* Lijntje onder actieve navigatielink */
+.nav-link.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+
+    bottom: 0;
+
+    height: 2px;
+
+    background-color: #111111;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.header {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 30px 20px 20px;
+}
+
+
+.logo {
+    width: 140px;
+    height: 140px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background-color: #dddddd;
+}
+
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 10px 30px 50px;
+}
+
+
+/* =========================================================
+   ZOEKBALK
+   ========================================================= */
+
+.search-section {
+    margin-bottom: 35px;
+}
+
+
+.search-box {
+    width: 100%;
+
+    max-width: 700px;
+
+    height: 45px;
+
+    margin: 0 auto;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #f1f1f3;
+
+    border-radius: 8px;
+}
+
+
+.search-icon {
+    margin-right: 10px;
+
+    font-size: 17px;
+
+    color: #555555;
+}
+
+
+#search-input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background-color: transparent;
+
+    color: #222222;
+
+    font-size: 15px;
+}
+
+
+#search-input::placeholder {
+    color: #999999;
+}
+
+
+/* =========================================================
+   ALGEMENE SECTIES
+   ========================================================= */
+
+.section {
+    margin-bottom: 40px;
+}
+
+
+.section-header {
+    width: 100%;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.section-header h2 {
+    margin: 0;
+
+    font-size: 22px;
+}
+
+
+.view-all {
+    padding: 5px;
+
+    border: none;
+
+    background: none;
+
+    color: #111111;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   CATEGORIEËN
+   ========================================================= */
+
+.categories {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+.category-card {
+    min-height: 140px;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #f0f0f0;
+
+    color: #111111;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background-color 0.2s;
+}
+
+
+.category-card:hover {
+    transform: translateY(-3px);
+
+    background-color: #e7e7e7;
+}
+
+
+.category-card.selected {
+    outline: 2px solid #222222;
+
+    background-color: #e4e4e4;
+}
+
+
+.category-image {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+.category-card span {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PRODUCTGRID
+   ========================================================= */
+
+.products {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   PRODUCTKAART
+   ========================================================= */
+
+.product-card {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PRODUCTAFBEELDING
+   ========================================================= */
+
+.product-image {
+    position: relative;
+
+    width: 100%;
+    height: 220px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background-color: #eeeeee;
+}
+
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 15px;
+}
+
+
+/* =========================================================
+   FAVORIETENKNOP
+   ========================================================= */
+
+.favorite-button {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    z-index: 5;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.9);
+
+    color: #111111;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background-color 0.2s;
+}
+
+
+.favorite-button:hover {
+    transform: scale(1.08);
+
+    background-color: #ffffff;
+}
+
+
+.favorite-button.active {
+    color: #111111;
+}
+
+
+/* =========================================================
+   PRODUCTTEKST
+   ========================================================= */
+
+.product-name {
+    margin: 10px 4px 2px;
+
+    font-size: 16px;
+
+    font-weight: normal;
+}
+
+
+.product-price {
+    margin: 3px 4px 10px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   WINKELWAGENKNOP
+   ========================================================= */
+
+.cart-button {
+    width: 100%;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: #1d1d1d;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+
+.cart-button:hover {
+    background-color: #444444;
+
+    transform: translateY(-1px);
+}
+
+
+.cart-button.added {
+    background-color: #555555;
+}
+
+
+/* =========================================================
+   GEEN ZOEKRESULTATEN
+   ========================================================= */
+
+.no-results {
+    margin: 30px 0;
+
+    text-align: center;
+
+    color: #777777;
+
+    font-size: 14px;
+}
+
+
+/* Met deze class verbergen we een element */
+.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   NIEUWE COLLECTIE
+   ========================================================= */
+
+.collection-banner {
+    width: 100%;
+
+    min-height: 230px;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    padding: 30px 40px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 10px;
+
+    background-color: #eeeeee;
+}
+
+
+.collection-text {
+    width: 45%;
+}
+
+
+.collection-text h2 {
+    margin: 0 0 10px;
+
+    font-size: 30px;
+}
+
+
+.collection-text p {
+    margin: 0 0 20px;
+
+    font-size: 16px;
+}
+
+
+.shop-button {
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: #222222;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+
+.shop-button:hover {
+    background-color: #444444;
+
+    transform: translateY(-1px);
+}
+
+
+.collection-image {
+    width: 45%;
+
+    height: 200px;
+}
+
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   ABOUT EN HELP
+   ========================================================= */
+
+.information-section {
+    padding: 40px 0;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+
+.information-section h2 {
+    margin: 0 0 10px;
+
+    font-size: 24px;
+}
+
+
+.information-section p {
+    max-width: 700px;
+
+    margin: 0;
+
+    color: #555555;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .products {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .product-image {
+        height: 200px;
+    }
+
+
+    .navbar {
+        gap: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBIELE VERSIE
+   Deze versie lijkt op de voorbeeldfoto.
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        background-color: #ffffff;
+    }
+
+
+    .app {
+        width: 100%;
+
+        min-height: 100vh;
+    }
+
+
+    /* -----------------------------------------------------
+       Navigatie mobiel
+       ----------------------------------------------------- */
+
+    .navbar {
+        position: relative;
+
+        height: 50px;
+
+        gap: 0;
+
+        justify-content: space-around;
+
+        align-items: flex-end;
+    }
+
+
+    .nav-link {
+        width: 25%;
+
+        padding: 16px 0 10px;
+
+        text-align: center;
+
+        font-size: 13px;
+    }
+
+
+    .nav-link.active::after {
+        left: 16%;
+        right: 16%;
+    }
+
+
+    /* -----------------------------------------------------
+       Logo mobiel
+       ----------------------------------------------------- */
+
+    .header {
+        padding: 12px 0 8px;
+    }
+
+
+    .logo {
+        width: 126px;
+        height: 126px;
+    }
+
+
+    /* -----------------------------------------------------
+       Main mobiel
+       ----------------------------------------------------- */
+
+    main {
+        width: 100%;
+
+        max-width: none;
+
+        padding: 0 10px 20px;
+    }
+
+
+    /* -----------------------------------------------------
+       Zoekbalk mobiel
+       ----------------------------------------------------- */
+
+    .search-section {
+        margin-bottom: 20px;
+    }
+
+
+    .search-box {
+        width: 100%;
+
+        max-width: none;
+
+        height: 33px;
+
+        padding: 0 12px;
+    }
+
+
+    .search-icon {
+        margin-right: 8px;
+
+        font-size: 14px;
+    }
+
+
+    #search-input {
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       Secties mobiel
+       ----------------------------------------------------- */
+
+    .section {
+        margin-bottom: 22px;
+    }
+
+
+    .section-header {
+        margin-bottom: 9px;
+    }
+
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+
+    .view-all {
+        padding: 0;
+
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------------------
+       Categorieën mobiel
+       ----------------------------------------------------- */
+
+    .categories {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+
+    .category-card {
+        min-height: 68px;
+
+        height: 68px;
+
+        padding: 6px 3px;
+
+        gap: 0;
+
+        border-radius: 7px;
+
+        justify-content: space-between;
+    }
+
+
+    .category-image {
+        width: 45px;
+        height: 40px;
+    }
+
+
+    .category-card span {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------------------
+       Producten mobiel
+       ----------------------------------------------------- */
+
+    .products {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 11px;
+    }
+
+
+    .product-image {
+        height: 106px;
+
+        border-radius: 6px;
+    }
+
+
+    .product-image img {
+        padding: 8px;
+    }
+
+
+    .favorite-button {
+        top: 5px;
+        right: 6px;
+
+        width: 27px;
+        height: 27px;
+
+        font-size: 21px;
+    }
+
+
+    .product-name {
+        margin: 5px 4px 0;
+
+        font-size: 11px;
+    }
+
+
+    .product-price {
+        margin: 2px 4px 5px;
+
+        font-size: 12px;
+    }
+
+
+    .cart-button {
+        width: calc(100% - 8px);
+
+        height: 25px;
+
+        margin: 0 4px;
+
+        border-radius: 5px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------------------
+       Nieuwe collectie mobiel
+       ----------------------------------------------------- */
+
+    .collection-banner {
+        min-height: 108px;
+
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        padding: 13px 15px;
+
+        border-radius: 6px;
+    }
+
+
+    .collection-text {
+        width: 55%;
+    }
+
+
+    .collection-text h2 {
+        margin-bottom: 4px;
+
+        font-size: 19px;
+    }
+
+
+    .collection-text p {
+        margin-bottom: 8px;
+
+        font-size: 12px;
+    }
+
+
+    .shop-button {
+        padding: 7px 15px;
+
+        border-radius: 5px;
+
+        font-size: 12px;
+    }
+
+
+    .collection-image {
+        width: 42%;
+
+        height: 90px;
+    }
+
+
+    .collection-image img {
+        border-radius: 5px;
+    }
+
+
+    /* -----------------------------------------------------
+       About / Help mobiel
+       ----------------------------------------------------- */
+
+    .information-section {
+        padding: 25px 5px;
+    }
+
+
+    .information-section h2 {
+        font-size: 19px;
+    }
+
+
+    .information-section p {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   ZEER KLEINE TELEFOONS
+   ========================================================= */
+
+@media (max-width: 370px) {
+
+    .logo {
+        width: 110px;
+        height: 110px;
+    }
+
+
+    .category-card span {
+        font-size: 9px;
+    }
+
+
+    .category-image {
+        width: 38px;
+        height: 35px;
+    }
+
+
+    .collection-text h2 {
+        font-size: 17px;
+    }
+
+}
+
+
+/* =========================================================
+    DIT WAS VOOR DE HOME PAGE BOVEN  NIKAN Home page
+   ========================================================= */
