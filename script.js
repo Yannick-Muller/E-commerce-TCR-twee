@@ -1,6 +1,4 @@
-// ============================================================
-// WEBSHOP - SCRIPT.JS
-// ============================================================
+"use strict";
 
 // ============================================================
 // 1. NAVIGATIE
@@ -10,8 +8,8 @@ const navLinks = document.querySelectorAll(".nav-link");
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navLinks.forEach((navLink) => {
-      navLink.classList.remove("active");
+    navLinks.forEach((item) => {
+      item.classList.remove("active");
     });
 
     link.classList.add("active");
@@ -19,130 +17,125 @@ navLinks.forEach((link) => {
 });
 
 // ============================================================
-// 2. PRODUCTEN SELECTEREN
+// 2. PRODUCTEN EN ZOEKBALK
 // ============================================================
 
 const productCards = document.querySelectorAll(".product-card");
-
 const noResults = document.querySelector("#no-results");
-
-// ============================================================
-// 3. ZOEKBALK
-// ============================================================
-
 const searchInput = document.querySelector("#search-input");
 
 let activeCategory = null;
 
-// ============================================================
-// 4. FUNCTIE: applyFilters()
-// ============================================================
-
+// Filter de producten op naam en categorie.
 const applyFilters = () => {
-  const searchText = searchInput.value.toLowerCase().trim();
+  const searchText = (searchInput?.value || "").toLowerCase().trim();
 
   let visibleProducts = 0;
 
   productCards.forEach((product) => {
-    const productName = product.dataset.name.toLowerCase();
+    const name = (product.dataset.name || "").toLowerCase();
+    const category = product.dataset.category;
 
-    const productCategory = product.dataset.category;
-
-    const matchesSearch = productName.includes(searchText);
+    const matchesSearch = name.includes(searchText);
 
     const matchesCategory =
-      activeCategory === null || productCategory === activeCategory;
+      activeCategory === null || category === activeCategory;
 
     if (matchesSearch && matchesCategory) {
       product.classList.remove("hidden");
-
       visibleProducts++;
     } else {
       product.classList.add("hidden");
     }
   });
 
-  if (visibleProducts === 0) {
-    noResults.classList.remove("hidden");
-  } else {
-    noResults.classList.add("hidden");
+  // Alleen uitvoeren als de melding bestaat.
+  if (noResults) {
+    noResults.classList.toggle("hidden", visibleProducts > 0);
   }
 };
 
-// ============================================================
-// 5. ZOEKEN TERWIJL IEMAND TYpt
-// ============================================================
-
-searchInput.addEventListener("input", () => {
-  applyFilters();
-});
+// Zoek terwijl iemand typt.
+if (searchInput) {
+  searchInput.addEventListener("input", applyFilters);
+}
 
 // ============================================================
-// 6. CATEGORIEËN
+// 3. CATEGORIEËN
 // ============================================================
 
 const categoryButtons = document.querySelectorAll(".category-card");
 
 categoryButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const clickedCategory = button.dataset.category;
+    const category = button.dataset.category;
 
-    if (activeCategory === clickedCategory) {
-      activeCategory = null;
+    // Dezelfde categorie opnieuw klikken schakelt hem uit.
+    activeCategory = activeCategory === category ? null : category;
 
-      button.classList.remove("selected");
-    } else {
-      activeCategory = clickedCategory;
-
-      categoryButtons.forEach((categoryButton) => {
-        categoryButton.classList.remove("selected");
-      });
-
-      button.classList.add("selected");
-    }
+    categoryButtons.forEach((item) => {
+      item.classList.toggle(
+        "selected",
+        item.dataset.category === activeCategory,
+      );
+    });
 
     applyFilters();
   });
 });
 
 // ============================================================
-// 7. BEKIJK ALLES - CATEGORIEËN
+// 4. BEKIJK ALLES - CATEGORIEËN
 // ============================================================
+
+// Deze knop ontbreekt momenteel in nikans HTML.
+// Daarom controleren we eerst of hij bestaat.
 
 const showAllCategories = document.querySelector("#show-all-categories");
 
-showAllCategories.addEventListener("click", () => {
-  activeCategory = null;
+if (showAllCategories) {
+  showAllCategories.addEventListener("click", () => {
+    activeCategory = null;
 
-  categoryButtons.forEach((button) => {
-    button.classList.remove("selected");
+    if (searchInput) {
+      searchInput.value = "";
+    }
+
+    categoryButtons.forEach((button) => {
+      button.classList.remove("selected");
+    });
+
+    applyFilters();
   });
-
-  searchInput.value = "";
-
-  applyFilters();
-});
+}
 
 // ============================================================
-// 8. BEKIJK ALLES - PRODUCTEN
+// 5. SHOP PAGINA
 // ============================================================
 
+// Relatief pad vanaf index.html.
+// De map "pages" moet naast index.html staan.
+
+const openShop = () => {
+  window.location.href = "pages/categories.html";
+};
+
+// Deze knop ontbreekt ook in de nieuwe HTML.
 const showAllProducts = document.querySelector("#show-all-products");
 
-showAllProducts.addEventListener("click", () => {
-  activeCategory = null;
+if (showAllProducts) {
+  showAllProducts.addEventListener("click", openShop);
+}
 
-  searchInput.value = "";
+// Shop nu knop
+const shopNowButton = document.querySelector("#shop-now-button");
 
-  categoryButtons.forEach((button) => {
-    button.classList.remove("selected");
-  });
-
-  applyFilters();
-});
+if (shopNowButton) {
+  shopNowButton.addEventListener("click", openShop);
+}
 
 // ============================================================
-// 9. FAVORIETEN / HARTJES
+// 6. FAVORIETEN
 // ============================================================
 
 const favoriteButtons = document.querySelectorAll(".favorite-button");
@@ -151,163 +144,148 @@ favoriteButtons.forEach((button) => {
   button.addEventListener("click", () => {
     button.classList.toggle("active");
 
-    if (button.classList.contains("active")) {
-      button.textContent = "♥";
-    } else {
-      button.textContent = "♡";
-    }
+    const isFavorite = button.classList.contains("active");
+
+    button.textContent = isFavorite ? "♥" : "♡";
   });
 });
 
 // ============================================================
-// 10. WINKELWAGEN
+// 7. WINKELWAGEN OPHALEN
 // ============================================================
 
-// Haal bestaande winkelwagen op uit localStorage.
-//
-// Als er nog niets bestaat,
-// beginnen we met een lege array.
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = [];
+
+// Probeer opgeslagen producten uit de browser te halen.
+try {
+  const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  cart = Array.isArray(savedCart) ? savedCart : [];
+} catch (error) {
+  console.warn("Winkelwagen kon niet geladen worden:", error);
+}
+
+// ============================================================
+// 8. WINKELWAGENSTATUS TONEN
+// ============================================================
+
+const productsSection = document.querySelector("#products");
+
+let cartInfo = document.querySelector("#cart-info");
+
+// Voeg automatisch een teller toe boven de producten.
+if (!cartInfo && productsSection) {
+  cartInfo = document.createElement("p");
+  cartInfo.id = "cart-info";
+
+  productsSection.before(cartInfo);
+}
 
 // Selecteer alle winkelwagenknoppen.
 const cartButtons = document.querySelectorAll(".cart-button");
 
 // ============================================================
-// FUNCTIE: KNOPPEN BIJWERKEN
+// 9. WINKELWAGEN BIJWERKEN
 // ============================================================
 
-// Deze functie controleert of een product
-// al in de winkelwagen staat.
-//
-// Zo blijven de knoppen ook correct
-// nadat de pagina opnieuw geladen wordt.
-const updateCartButtons = () => {
+const updateCart = () => {
+  // Bereken de totaalprijs van alle producten.
+  const total = cart.reduce((sum, product) => {
+    return sum + product.price;
+  }, 0);
+
+  // Laat het aantal en de totaalprijs zien.
+  if (cartInfo) {
+    cartInfo.textContent =
+      `Winkelwagen: ${cart.length} producten | ` +
+      `Totaal: €${total.toFixed(2).replace(".", ",")}`;
+  }
+
+  // Pas elke winkelwagenknop aan.
   cartButtons.forEach((button) => {
-    const productCard = button.closest(".product-card");
+    const card = button.closest(".product-card");
 
-    const productName = productCard.dataset.name;
+    if (!card) return;
 
-    const productExists = cart.some((product) => {
-      return product.name === productName;
+    const name = card.dataset.name;
+
+    const isAdded = cart.some((product) => {
+      return product.name === name;
     });
 
-    if (productExists) {
-      button.classList.add("added");
+    button.classList.toggle("added", isAdded);
 
-      button.textContent = "Toegevoegd ✓";
-    } else {
-      button.classList.remove("added");
-
-      button.textContent = "In winkelwagen";
-    }
+    button.textContent = isAdded ? "Toegevoegd ✓" : "In winkelwagen";
   });
 };
 
 // ============================================================
-// PRODUCT TOEVOEGEN OF VERWIJDEREN
+// 10. PRODUCT TOEVOEGEN OF VERWIJDEREN
 // ============================================================
 
 cartButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    // Zoek de productkaart van deze knop.
-    const productCard = button.closest(".product-card");
+    // Zoek de productkaart bij de aangeklikte knop.
+    const card = button.closest(".product-card");
 
-    // Haal de productnaam op.
-    const productName = productCard.dataset.name;
+    if (!card) return;
 
-    // Haal de categorie op.
-    const productCategory = productCard.dataset.category;
+    // Productgegevens ophalen.
+    const name = card.dataset.name;
+    const category = card.dataset.category;
 
-    // Zoek het prijs-element.
-    const priceText = productCard.querySelector(".product-price").textContent;
+    const priceText = card.querySelector(".product-price")?.textContent || "";
 
-    // Maak bijvoorbeeld:
-    //
-    // € 69,99
-    //
-    // naar:
-    //
-    // 69.99
-    const productPrice = Number(
-      priceText.replace("€", "").replace(",", ".").trim(),
-    );
+    // Maak van "€ 69,99" het getal 69.99.
+    const price = Number(priceText.replace("€", "").replace(",", ".").trim());
 
-    // Haal de afbeelding op.
-    const imageElement = productCard.querySelector("img");
+    if (!Number.isFinite(price)) {
+      console.error("Ongeldige productprijs:", priceText);
+      return;
+    }
 
-    const productImage = imageElement.getAttribute("src");
+    const image = card.querySelector(".product-image img")?.src || "";
 
-    // Controleer of het product al bestaat.
+    // Zoek of het product al in de winkelwagen zit.
     const existingProduct = cart.find((product) => {
-      return product.name === productName;
+      return product.name === name;
     });
 
-    // ========================================================
-    // PRODUCT STAAT AL IN WINKELWAGEN
-    // ========================================================
-
     if (existingProduct) {
-      // Verwijder het product.
+      // Verwijder het product bij opnieuw klikken.
       cart = cart.filter((product) => {
-        return product.name !== productName;
+        return product.name !== name;
+      });
+    } else {
+      // Voeg het product echt toe.
+      cart.push({
+        name: name,
+        category: category,
+        price: price,
+        image: image,
       });
     }
 
-    // ========================================================
-    // PRODUCT STAAT NOG NIET IN WINKELWAGEN
-    // ========================================================
-    else {
-      const product = {
-        name: productName,
-
-        category: productCategory,
-
-        price: productPrice,
-
-        image: productImage,
-      };
-
-      // Voeg product toe.
-      cart.push(product);
+    // Probeer de winkelwagen te bewaren.
+    try {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } catch (error) {
+      console.warn("Winkelwagen kon niet opgeslagen worden:", error);
     }
 
-    // ========================================================
-    // OPSLAAN IN LOCALSTORAGE
-    // ========================================================
+    // Werk teller en knoppen bij.
+    updateCart();
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Werk de knoppen opnieuw bij.
-    updateCartButtons();
-
-    // Handig tijdens het testen.
+    // Laat zien wat er in de winkelwagen zit.
     console.log("Winkelwagen:", cart);
   });
 });
 
 // ============================================================
-// 11. SHOP NU KNOP
+// 11. PAGINA STARTEN
 // ============================================================
 
-const shopNowButton = document.querySelector("#shop-now-button");
-
-const productsSection = document.querySelector("#products");
-
-shopNowButton.addEventListener("click", () => {
-  productsSection.scrollIntoView({
-    behavior: "smooth",
-
-    block: "start",
-  });
-});
-
-// ============================================================
-// 12. PAGINA EERSTE KEER LADEN
-// ============================================================
-
-// Productfilters meteen uitvoeren.
 applyFilters();
+updateCart();
 
-// Controleer meteen welke producten
-// al in de winkelwagen staan.
-updateCartButtons();
+console.log("Webshop JavaScript geladen!");
