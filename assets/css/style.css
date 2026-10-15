@@ -277,6 +277,18 @@ main{
     overflow-wrap: break-word;
 }
 
+/* ----- Card Footer ----- */
+.product-card__footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.product-card__footer span + p:last-child{
+    color: grey;
+}
 /* ===== Ipad ===== */
 @media (max-width: 1024px) {
     .main {
