@@ -137,19 +137,7 @@ if (shopNowButton) {
 // ============================================================
 // 6. FAVORIETEN
 // ============================================================
-
-const favoriteButtons = document.querySelectorAll(".favorite-button");
-
-favoriteButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("active");
-
-    const isFavorite = button.classList.contains("active");
-
-    button.textContent = isFavorite ? "♥" : "♡";
-  });
-});
-
+//Andere route verwerken favorites.js / favorites.css
 // ============================================================
 // 7. WINKELWAGEN OPHALEN
 // ============================================================

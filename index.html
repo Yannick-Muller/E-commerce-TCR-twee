@@ -7,19 +7,23 @@
 
     <title>Webshop</title>
 
-    <link rel="stylesheet" href="style-nikan.css">
+    <!-- Bestaande vormgeving behouden. -->
+    <link rel="stylesheet" href="style-nikan.css" />
+
+    <!-- Nieuwe vormgeving voor favorieten. -->
+    <link rel="stylesheet" href="favorites.css" />
   </head>
 
   <body>
     <div class="app">
       <!-- =====================================================
-             NAVIGATIE
-             ===================================================== -->
+           NAVIGATIE
+           ===================================================== -->
 
       <nav class="navbar">
         <a href="index.html" class="nav-link active"> Home </a>
 
-        <a href="/pages/categories.html" class="nav-link"> Shop </a>
+        <a href="pages/categories.html" class="nav-link"> Shop </a>
 
         <a href="#about" class="nav-link"> About </a>
 
@@ -27,8 +31,8 @@
       </nav>
 
       <!-- =====================================================
-             LOGO
-             ===================================================== -->
+           LOGO
+           ===================================================== -->
 
       <header class="header" id="home">
         <div class="logo">
@@ -38,12 +42,12 @@
 
       <main>
         <!-- =================================================
-                 ZOEKBALK
-                 ================================================= -->
+             ZOEKBALK
+             ================================================= -->
 
         <section class="search-section">
           <div class="search-box">
-            <span class="search-icon"> 🔍 </span>
+            <span class="search-icon">🔍</span>
 
             <input
               type="text"
@@ -54,8 +58,8 @@
         </section>
 
         <!-- =================================================
-                 CATEGORIEËN
-                 ================================================= -->
+             CATEGORIEËN
+             ================================================= -->
 
         <section class="section" id="shop">
           <div class="section-header">
@@ -69,7 +73,7 @@
                 <img src="images/category-shoes.png" alt="Schoenen" />
               </div>
 
-              <span> Schoenen </span>
+              <span>Schoenen</span>
             </button>
 
             <!-- Kleding -->
@@ -78,7 +82,7 @@
                 <img src="images/category-clothing.png" alt="Kleding" />
               </div>
 
-              <span> Kleding </span>
+              <span>Kleding</span>
             </button>
 
             <!-- Accessoires -->
@@ -87,7 +91,7 @@
                 <img src="images/category-accessories.png" alt="Accessoires" />
               </div>
 
-              <span> Accessoires </span>
+              <span>Accessoires</span>
             </button>
 
             <!-- Elektronica -->
@@ -96,14 +100,14 @@
                 <img src="images/category-electronics.png" alt="Elektronica" />
               </div>
 
-              <span> Elektronica </span>
+              <span>Elektronica</span>
             </button>
           </div>
         </section>
 
         <!-- =================================================
-                 PRODUCTEN
-                 ================================================= -->
+             PRODUCTEN
+             ================================================= -->
 
         <section class="section">
           <div class="section-header">
@@ -112,11 +116,12 @@
 
           <div class="products" id="products">
             <!-- =========================================
-                         PRODUCT 1
-                         ========================================= -->
+                 PRODUCT 1: SNEAKERS
+                 ========================================= -->
 
             <article
               class="product-card"
+              data-product-id="sneakers-6999"
               data-name="Sneakers"
               data-category="schoenen"
             >
@@ -124,8 +129,10 @@
                 <img src="images/sneakers.jpg" alt="Sneakers" />
 
                 <button
+                  type="button"
                   class="favorite-button"
                   aria-label="Voeg Sneakers toe aan favorieten"
+                  aria-pressed="false"
                 >
                   ♡
                 </button>
@@ -139,11 +146,12 @@
             </article>
 
             <!-- =========================================
-                         PRODUCT 2
-                         ========================================= -->
+                 PRODUCT 2: T-SHIRT
+                 ========================================= -->
 
             <article
               class="product-card"
+              data-product-id="tshirt-2499"
               data-name="T-shirt"
               data-category="kleding"
             >
@@ -151,8 +159,10 @@
                 <img src="images/tshirt.jpg" alt="T-shirt" />
 
                 <button
+                  type="button"
                   class="favorite-button"
                   aria-label="Voeg T-shirt toe aan favorieten"
+                  aria-pressed="false"
                 >
                   ♡
                 </button>
@@ -166,11 +176,12 @@
             </article>
 
             <!-- =========================================
-                         PRODUCT 3
-                         ========================================= -->
+                 PRODUCT 3: TAS
+                 ========================================= -->
 
             <article
               class="product-card"
+              data-product-id="tas-3999"
               data-name="Tas"
               data-category="accessoires"
             >
@@ -178,8 +189,10 @@
                 <img src="images/bag.jpg" alt="Tas" />
 
                 <button
+                  type="button"
                   class="favorite-button"
                   aria-label="Voeg Tas toe aan favorieten"
+                  aria-pressed="false"
                 >
                   ♡
                 </button>
@@ -193,11 +206,12 @@
             </article>
 
             <!-- =========================================
-                         PRODUCT 4
-                         ========================================= -->
+                 PRODUCT 4: KOPTELEFOON
+                 ========================================= -->
 
             <article
               class="product-card"
+              data-product-id="headphones-8999"
               data-name="Koptelefoon"
               data-category="elektronica"
             >
@@ -205,8 +219,10 @@
                 <img src="images/headphones.jpg" alt="Koptelefoon" />
 
                 <button
+                  type="button"
                   class="favorite-button"
                   aria-label="Voeg Koptelefoon toe aan favorieten"
+                  aria-pressed="false"
                 >
                   ♡
                 </button>
@@ -220,15 +236,15 @@
             </article>
           </div>
 
-          <!-- Wordt zichtbaar als zoeken niets oplevert -->
+          <!-- Wordt zichtbaar als zoeken niets oplevert. -->
           <p id="no-results" class="no-results hidden">
             Geen producten gevonden.
           </p>
         </section>
 
         <!-- =================================================
-                 NIEUWE COLLECTIE
-                 ================================================= -->
+             NIEUWE COLLECTIE
+             ================================================= -->
 
         <section class="collection-banner">
           <div class="collection-text">
@@ -244,8 +260,12 @@
           </div>
         </section>
       </main>
-  
-    <!-- JavaScript helemaal onderaan laden -->
+    </div>
+
+    <!-- Bestaande zoekfunctie, categorieën en winkelwagen. -->
     <script src="script.js"></script>
+
+    <!-- Nieuwe favorietenfunctie. -->
+    <script src="favorites.js"></script>
   </body>
 </html>
