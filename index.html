@@ -12,6 +12,9 @@
 
     <!-- Nieuwe vormgeving voor favorieten. -->
     <link rel="stylesheet" href="favorites.css" />
+
+    <!-- Flash sale: countdown en kortingsprijzen. -->
+    <link rel="stylesheet" href="sale.css" />
   </head>
 
   <body>
@@ -28,9 +31,10 @@
         <a href="#about" class="nav-link"> About </a>
 
         <a href="#help" class="nav-link"> Help </a>
-
-        <a href="cart.html" class="nav-link"> Cart (<span id="cart-count">0</span>) </a>
       </nav>
+
+      <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
+      <div id="flash-sale"></div>
 
       <!-- =====================================================
            LOGO
@@ -66,6 +70,8 @@
         <section class="section" id="shop">
           <div class="section-header">
             <h2>Categorieën</h2>
+
+            <!-- Reset het categoriefilter en de zoekbalk. -->
             <button type="button" class="view-all" id="show-all-categories">
               Toon alles
             </button>
@@ -119,7 +125,9 @@
             <h2>Populaire producten</h2>
           </div>
 
-          <div class="products" id="products"></div>
+          <div class="products" id="products">
+            <!-- De kaarten worden ingeladen door home-products.js -->
+          </div>
 
           <!-- Wordt zichtbaar als zoeken niets oplevert. -->
           <p id="no-results" class="no-results hidden">
@@ -147,9 +155,12 @@
       </main>
     </div>
 
-   <script src="products.js"></script>
-   <script src="home-products.js"></script>
-   <script src="script.js"></script>
-   <script src="favorites.js"></script>
+    <!-- Haalt products.json op met fetch() en laadt daarna de scripts
+         hieronder in deze volgorde: flash sale, productkaarten,
+         zoeken/filteren/winkelwagen en favorieten. -->
+    <script
+      src="products-loader.js"
+      data-then="sale.js,home-products.js,script.js,favorites.js"
+    ></script>
   </body>
 </html>

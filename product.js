@@ -1,7 +1,7 @@
 "use strict";
 
 // Alles zit in één functie, zodat er geen namen botsen met script.js of favorites.js.
-document.addEventListener("DOMContentLoaded", () => {
+const startProduct = () => {
   const MAX_QTY = 10;
   const MIN_QTY = 1;
 
@@ -502,4 +502,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1200);
     });
   });
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startProduct);
+} else {
+  startProduct();
+}

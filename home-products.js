@@ -13,7 +13,9 @@
   const products = window.PRODUCTS || {};
   const Sale = window.Sale;
 
-  if (!container) return;
+  // Geen container of geen producten (bijv. products.json niet geladen):
+  // laat de pagina ongemoeid, zodat een foutmelding zichtbaar blijft.
+  if (!container || Object.keys(products).length === 0) return;
 
   // Op pages/categories.html staan de afbeeldingen een map hoger.
   const prefix = window.location.pathname.includes("/pages/") ? "../" : "";

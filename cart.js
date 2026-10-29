@@ -1,7 +1,7 @@
 "use strict";
 
 // Alles zit in één functie, zodat er geen namen botsen met andere scripts.
-document.addEventListener("DOMContentLoaded", () => {
+const startCart = () => {
   const MAX_QTY = 10;
 
   // ============================================================
@@ -273,10 +273,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Terugkomen met de terugknop: lees de winkelwagen opnieuw in.
   window.addEventListener("pageshow", render);
 
+  // De flash sale is afgelopen: prijzen zijn aangepast.
+  window.addEventListener("flashsale:ended", render);
+
   // Winkelwagen aangepast in een ander tabblad.
   window.addEventListener("storage", (event) => {
     if (event.key === CART_KEY || event.key === null) render();
   });
 
   render();
-});
+};
+
+// De scripts worden pas geladen nadat products.json is opgehaald,
+// dus de pagina kan al klaar zijn.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startCart);
+} else {
+  startCart();
+}

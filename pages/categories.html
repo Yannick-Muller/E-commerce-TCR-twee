@@ -16,17 +16,13 @@
     <!-- Flash sale: countdown en kortingsprijzen. -->
     <link rel="stylesheet" href="../sale.css" />
 
-    <!-- Productgegevens, flash sale en links naar de productpagina.
-         De volgorde is belangrijk. -->
-    <script src="../products.js" defer></script>
-    <script src="../sale.js" defer></script>
-    <script src="../shop-products.js" defer></script>
-
-    <!-- Bestaande zoekfunctie behouden. -->
-    <script src="../assets/js/searchbar.js" defer></script>
-
-    <!-- Nieuwe favorietenfunctie. -->
-    <script src="../favorites.js" defer></script>
+    <!-- Haalt products.json op met fetch() en laadt daarna de scripts
+         hieronder in deze volgorde: flash sale, productkaarten,
+         zoekfunctie en favorieten. -->
+    <script
+      src="../products-loader.js"
+      data-then="../sale.js,../shop-products.js,../assets/js/searchbar.js,../favorites.js"
+    ></script>
   </head>
 
   <body>
@@ -137,181 +133,8 @@
            PRODUCTEN
            ================================================= -->
 
-      <section class="categories__products">
-        <!-- PRODUCT 1: T-SHIRT VAN € 24,99 -->
-
-        <article class="product-card" data-product-id="tshirt-2499">
-          <div class="product-card__image-wrapper">
-            <img src="../images/category-clothing.png" alt="" />
-          </div>
-
-          <h3>T-shirt</h3>
-
-          <p class="product-card__description">
-            Een comfortabel T-shirt met een tijdloze uitstraling. Perfect voor
-            dagelijks gebruik en eenvoudig te combineren met je favoriete
-            outfits.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 24,99 </span>
-
-            <p><span>Vooraad:</span> 3</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 2: TAS VAN € 29,99 -->
-
-        <article class="product-card" data-product-id="tas-2999">
-          <div class="product-card__image-wrapper">
-            <img src="../images/category-accessories.png" alt="" />
-          </div>
-
-          <h3>Tas</h3>
-
-          <p class="product-card__description">
-            Een stijlvolle en praktische tas voor onderweg. Ideaal om je
-            dagelijkse benodigdheden gemakkelijk mee te nemen.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 29,99 </span>
-
-            <p><span>Vooraad:</span> 5</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 3: TAS LIMITED EDITION -->
-
-        <article class="product-card" data-product-id="tas-limited-3999">
-          <div class="product-card__image-wrapper">
-            <img src="../images/bag.jpg" alt="" />
-          </div>
-
-          <h3>Tas (limited edition)</h3>
-
-          <p class="product-card__description">
-            Een exclusieve tas met een unieke uitstraling. De perfecte keuze
-            voor wie iets bijzonders zoekt dat stijl en functionaliteit
-            combineert.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 39,99 </span>
-
-            <p><span>Vooraad:</span> 8</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 4: HEADSET -->
-
-        <article class="product-card" data-product-id="headphones-8999">
-          <div class="product-card__image-wrapper">
-            <img src="../images/headphones.jpg" alt="" />
-          </div>
-
-          <h3>Headset</h3>
-
-          <p class="product-card__description">
-            Geniet van je favoriete muziek en games met deze comfortabele
-            headset. Ideaal voor dagelijks gebruik, entertainment en online
-            gesprekken.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 89,99 </span>
-
-            <p><span>Vooraad:</span> 5</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 5: SNEAKERS VAN € 24,99 -->
-
-        <article class="product-card" data-product-id="sneakers-2499">
-          <div class="product-card__image-wrapper">
-            <img src="../images/category-shoes.png" alt="" />
-          </div>
-
-          <h3>Sneakers</h3>
-
-          <p class="product-card__description">
-            Moderne sneakers die comfort en stijl perfect combineren. Geschikt
-            voor dagelijks gebruik en eenvoudig te dragen bij verschillende
-            outfits.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 24,99 </span>
-
-            <p><span>Vooraad:</span> 6</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 6: T-SHIRT VAN € 23,99 -->
-
-        <article class="product-card" data-product-id="tshirt-2399">
-          <div class="product-card__image-wrapper">
-            <img src="../images/tshirt.jpg" alt="" />
-          </div>
-
-          <h3>T-shirt</h3>
-
-          <p class="product-card__description">
-            Een veelzijdig T-shirt met een casual look. Dankzij het eenvoudige
-            design is het perfect voor een ontspannen dag of een complete
-            streetwear-outfit.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 23,99 </span>
-
-            <p><span>Vooraad:</span> 1</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 7: HARDLOOP SNEAKERS -->
-
-        <article class="product-card" data-product-id="hardloop-sneakers-4499">
-          <div class="product-card__image-wrapper">
-            <img src="../images/sneakers.jpg" alt="" />
-          </div>
-
-          <h3>Hardloop sneakers</h3>
-
-          <p class="product-card__description">
-            Comfortabele hardloopsneakers voor je dagelijkse beweging. Ideaal
-            voor een rondje hardlopen, een wandeling of een actieve dag
-            onderweg.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 44,99 </span>
-
-            <p><span>Vooraad:</span> 9</p>
-          </div>
-        </article>
-
-        <!-- PRODUCT 8: CONTROLLER -->
-
-        <article class="product-card" data-product-id="controller-6999">
-          <div class="product-card__image-wrapper">
-            <img src="../images/category-electronics.png" alt="" />
-          </div>
-
-          <h3>Controller</h3>
-
-          <p class="product-card__description">
-            Verbeter je game-ervaring met deze controller. Perfect voor
-            ontspannen gamesessies en fanatieke speelmomenten met je favoriete
-            games.
-          </p>
-
-          <div class="product-card__footer">
-            <span class="product-card__price"> € 69,99 </span>
-
-            <p><span>Vooraad:</span> 4</p>
-          </div>
-        </article>
+      <section class="categories__products" id="products">
+        <!-- De productkaarten worden ingeladen door shop-products.js -->
       </section>
     </main>
   </body>
