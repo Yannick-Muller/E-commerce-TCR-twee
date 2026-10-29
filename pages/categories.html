@@ -5,16 +5,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Document</title>
+    <title>Shop | Webshop</title>
 
     <!-- Bestaande vormgeving van de shoppagina. -->
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
 
     <!-- Nieuwe vormgeving voor favorieten. -->
     <link rel="stylesheet" href="../favorites.css" />
 
+    <!-- Flash sale: countdown en kortingsprijzen. -->
+    <link rel="stylesheet" href="../sale.css" />
+
+    <!-- Productgegevens, flash sale en links naar de productpagina.
+         De volgorde is belangrijk. -->
+    <script src="../products.js" defer></script>
+    <script src="../sale.js" defer></script>
+    <script src="../shop-products.js" defer></script>
+
     <!-- Bestaande zoekfunctie behouden. -->
-    <script src="/assets/js/searchbar.js" defer></script>
+    <script src="../assets/js/searchbar.js" defer></script>
 
     <!-- Nieuwe favorietenfunctie. -->
     <script src="../favorites.js" defer></script>
@@ -66,8 +75,15 @@
         <li class="nav__content--item">
           <a href="">Help</a>
         </li>
+
+        <li class="nav__content--item">
+          <a href="../cart.html">Cart (<span id="cart-count">0</span>)</a>
+        </li>
       </ul>
     </nav>
+
+    <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
+    <div id="flash-sale"></div>
 
     <main class="categories">
       <!-- =================================================

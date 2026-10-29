@@ -91,6 +91,35 @@ document.addEventListener("DOMContentLoaded", () => {
     return el;
   }
 
+   const priceNow = (p) => (window.Sale ? window.Sale.getPrice(p) : p.price);
+
+   function renderMainPrice() {
+     if (!currentProduct) return;
+
+     const sale = window.Sale;
+     const priceEl = setText("product-price", euro(priceNow(currentProduct)));
+     const discounted = sale && sale.isOnSale(currentProduct);
+
+     if (priceEl) {
+       priceEl.classList.toggle("is-sale", Boolean(discounted));
+
+       if (discounted) {
+         const old = document.createElement("s");
+         old.className = "price-old";
+         old.textContent = euro(currentProduct.price);
+
+         const badge = document.createElement("span");
+         badge.className = "sale-badge";
+         badge.textContent = `-${sale.discountPercent(currentProduct)}%`;
+
+         priceEl.append(old, badge);
+       }
+     }
+
+     const section = document.getElementById("product");
+     if (section) section.dataset.price = String(priceNow(currentProduct));
+   }
+
   function renderProduct() {
     const section = document.getElementById("product");
 
@@ -104,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setText("product-title", currentProduct.name);
     setText("breadcrumb-name", currentProduct.name);
-    setText("product-price", euro(currentProduct.price));
+    renderMainPrice();
     setText("product-summary", currentProduct.summary || "");
 
     const brand = setText("product-brand", currentProduct.brand || "");
@@ -116,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (section) {
       section.dataset.name = currentProduct.name;
       section.dataset.category = currentProduct.category;
-      section.dataset.price = String(currentProduct.price);
+      section.dataset.price = String(priceNow(currentProduct))
       section.dataset.image = (currentProduct.images || [])[0] || "";
     }
 
@@ -191,6 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach(([id, p]) => {
           const card = document.createElement("article");
           card.className = "card";
+          card.dataset.productId = id;
 
           const imageBox = document.createElement("div");
           imageBox.className = "card-image";
@@ -217,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const price = document.createElement("p");
           price.className = "card-price";
-          price.textContent = euro(p.price);
+          price.textContent = euro(priceNow(p));
 
           const btn = document.createElement("button");
           btn.type = "button";
@@ -225,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
           btn.textContent = "Add to Cart";
           btn.dataset.name = p.name;
           btn.dataset.category = p.category;
-          btn.dataset.price = String(p.price);
+          btn.dataset.price = String(priceNow(p));
           btn.dataset.image = (p.images || [])[0] || "";
 
           body.append(h3, meta, price, btn);
@@ -237,6 +267,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderProduct();
 
+     window.addEventListener("flashsale:ended", () => {
+     renderMainPrice();
+
+     document
+       .querySelectorAll("#related-grid .card[data-product-id]")
+       .forEach((card) => {
+         const p = allProducts[card.dataset.productId];
+         if (!p) return;
+
+         const priceEl = card.querySelector(".card-price");
+         if (priceEl) priceEl.textContent = euro(priceNow(p));
+
+         const button = card.querySelector(".btn-card");
+         if (button) button.dataset.price = String(priceNow(p));
+       });
+   });
   // ============================================================
   // GALERIJ
   // ============================================================
