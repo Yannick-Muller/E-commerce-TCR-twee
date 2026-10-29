@@ -71,3 +71,53 @@
         font-size: 20px;
     }
 }
+
+.product-image a {
+    display: block;
+}
+ 
+.product-name a {
+    color: inherit;
+    text-decoration: none;
+}
+ 
+.product-name a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   ACTIEKNOPPEN: HOVER, FOCUS EN FEEDBACK
+   ========================================================= */
+
+/* Hartje: hover en zachte overgang. */
+.favorite-button {
+    transition:
+        background-color 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+.favorite-button:hover {
+    background-color: #f1f1f3;
+    border-color: #999999;
+    transform: scale(1.08);
+}
+
+.favorite-button.active:hover {
+    background-color: #ffe0e7;
+}
+
+/* Winkelwagenknop: zichtbare focus met het toetsenbord. */
+.cart-button:focus-visible {
+    outline: 3px solid #222222;
+    outline-offset: 3px;
+}
+
+/* Toegevoegd: dezelfde groene kleur als op de productpagina. */
+.cart-button.added {
+    background-color: #3f6b4a;
+}
+
+.cart-button.added:hover {
+    background-color: #355a3e;
+}

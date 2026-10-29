@@ -132,3 +132,36 @@ function updateFavoritesDisplay() {
 
 // Deze functie wordt ook uitgevoerd na het vernieuwen.
 updateFavoritesDisplay();
+
+// ============================================================
+// 6. FAVORIETEN OPNIEUW LADEN BIJ TERUGKEREN NAAR DE PAGINA
+// ============================================================
+
+// Leest de lijst opnieuw uit localStorage en tekent de hartjes opnieuw.
+function reloadFavoritesFromStorage() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+
+    favorites.clear();
+
+    if (Array.isArray(stored)) {
+      stored.forEach((id) => {
+        if (typeof id === "string") favorites.add(id);
+      });
+    }
+  } catch (error) {
+    console.warn("Favorieten konden niet geladen worden:", error);
+  }
+
+  updateFavoritesDisplay();
+}
+
+// Werkt ook als je met de terugknop terugkomt op de pagina.
+window.addEventListener("pageshow", reloadFavoritesFromStorage);
+
+// Werkt ook als je de site in een ander tabblad hebt openstaan.
+window.addEventListener("storage", (event) => {
+  if (event.key === FAVORITES_KEY || event.key === null) {
+    reloadFavoritesFromStorage();
+  }
+});

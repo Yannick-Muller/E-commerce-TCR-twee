@@ -28,6 +28,8 @@
         <a href="#about" class="nav-link"> About </a>
 
         <a href="#help" class="nav-link"> Help </a>
+
+        <a href="cart.html" class="nav-link"> Cart (<span id="cart-count">0</span>) </a>
       </nav>
 
       <!-- =====================================================
@@ -64,6 +66,9 @@
         <section class="section" id="shop">
           <div class="section-header">
             <h2>Categorieën</h2>
+            <button type="button" class="view-all" id="show-all-categories">
+              Toon alles
+            </button>
           </div>
 
           <div class="categories">
@@ -114,127 +119,7 @@
             <h2>Populaire producten</h2>
           </div>
 
-          <div class="products" id="products">
-            <!-- =========================================
-                 PRODUCT 1: SNEAKERS
-                 ========================================= -->
-
-            <article
-              class="product-card"
-              data-product-id="sneakers-6999"
-              data-name="Sneakers"
-              data-category="schoenen"
-            >
-              <div class="product-image">
-                <img src="images/sneakers.jpg" alt="Sneakers" />
-
-                <button
-                  type="button"
-                  class="favorite-button"
-                  aria-label="Voeg Sneakers toe aan favorieten"
-                  aria-pressed="false"
-                >
-                  ♡
-                </button>
-              </div>
-
-              <h3 class="product-name">Sneakers</h3>
-
-              <p class="product-price">€ 69,99</p>
-
-              <button class="cart-button">In winkelwagen</button>
-            </article>
-
-            <!-- =========================================
-                 PRODUCT 2: T-SHIRT
-                 ========================================= -->
-
-            <article
-              class="product-card"
-              data-product-id="tshirt-2499"
-              data-name="T-shirt"
-              data-category="kleding"
-            >
-              <div class="product-image">
-                <img src="images/tshirt.jpg" alt="T-shirt" />
-
-                <button
-                  type="button"
-                  class="favorite-button"
-                  aria-label="Voeg T-shirt toe aan favorieten"
-                  aria-pressed="false"
-                >
-                  ♡
-                </button>
-              </div>
-
-              <h3 class="product-name">T-shirt</h3>
-
-              <p class="product-price">€ 24,99</p>
-
-              <button class="cart-button">In winkelwagen</button>
-            </article>
-
-            <!-- =========================================
-                 PRODUCT 3: TAS
-                 ========================================= -->
-
-            <article
-              class="product-card"
-              data-product-id="tas-3999"
-              data-name="Tas"
-              data-category="accessoires"
-            >
-              <div class="product-image">
-                <img src="images/bag.jpg" alt="Tas" />
-
-                <button
-                  type="button"
-                  class="favorite-button"
-                  aria-label="Voeg Tas toe aan favorieten"
-                  aria-pressed="false"
-                >
-                  ♡
-                </button>
-              </div>
-
-              <h3 class="product-name">Tas</h3>
-
-              <p class="product-price">€ 39,99</p>
-
-              <button class="cart-button">In winkelwagen</button>
-            </article>
-
-            <!-- =========================================
-                 PRODUCT 4: KOPTELEFOON
-                 ========================================= -->
-
-            <article
-              class="product-card"
-              data-product-id="headphones-8999"
-              data-name="Koptelefoon"
-              data-category="elektronica"
-            >
-              <div class="product-image">
-                <img src="images/headphones.jpg" alt="Koptelefoon" />
-
-                <button
-                  type="button"
-                  class="favorite-button"
-                  aria-label="Voeg Koptelefoon toe aan favorieten"
-                  aria-pressed="false"
-                >
-                  ♡
-                </button>
-              </div>
-
-              <h3 class="product-name">Koptelefoon</h3>
-
-              <p class="product-price">€ 89,99</p>
-
-              <button class="cart-button">In winkelwagen</button>
-            </article>
-          </div>
+          <div class="products" id="products"></div>
 
           <!-- Wordt zichtbaar als zoeken niets oplevert. -->
           <p id="no-results" class="no-results hidden">
@@ -262,10 +147,9 @@
       </main>
     </div>
 
-    <!-- Bestaande zoekfunctie, categorieën en winkelwagen. -->
-    <script src="script.js"></script>
-
-    <!-- Nieuwe favorietenfunctie. -->
-    <script src="favorites.js"></script>
+   <script src="products.js"></script>
+   <script src="home-products.js"></script>
+   <script src="script.js"></script>
+   <script src="favorites.js"></script>
   </body>
 </html>

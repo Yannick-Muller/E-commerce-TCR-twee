@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Title Placeholder | Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <script src="products.js" defer></script>
+  <script src="product.js" defer></script>
+</head>
+<body class="product-page">
+
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="pages/categories.html" class="nav-link" aria-current="page">Shop</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#help" class="nav-link">Help</a>
+      <a href="cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+ 
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/categories.html">Shop</a></li>
+        <li aria-current="page" id="breadcrumb-name">Product Name</li>
+      </ol>
+    </nav>
+
+    <section class="product" id="product" data-name="Product Title Placeholder" data-category="schoenen" data-price="99.99" data-image="">
+
+      <div class="gallery">
+        <div class="gallery-main placeholder" id="main-image" role="img" aria-label="Product image 1">
+          <span id="main-image-label">Image Placeholder</span>
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs" role="group" aria-label="Product image thumbnails">
+          <button type="button" class="thumb placeholder is-active" data-label="Image Placeholder" data-alt="Product image 1" aria-pressed="true" aria-label="Show image 1"></button>
+          <button type="button" class="thumb placeholder" data-label="Image Placeholder 2" data-alt="Product image 2" aria-pressed="false" aria-label="Show image 2"></button>
+        </div>
+      </div>
+
+      <div class="info">
+        <p class="info-brand" id="product-brand">Brand Name</p>
+        <p class="info-tag" id="product-category">Category</p>
+        <h1 class="info-title" id="product-title">Product Title Placeholder</h1>
+        <p class="info-price" id="product-price">€ 99,99</p>
+ 
+        <div class="info-rating" aria-label="Rated 5 out of 5 stars">
+          <span aria-hidden="true">★★★★★</span>
+        </div>
+ 
+        <p class="info-desc" id="product-summary">
+          A short product summary goes here. Describe the key benefits in a sentence or two so
+          shoppers can decide quickly whether to keep reading.
+        </p>
+ 
+        <hr class="divider">
+ 
+        <form id="product-form" novalidate>
+ 
+          <fieldset class="option">
+            <legend class="option-label">Size</legend>
+            <div class="sizes">
+              <label class="size"><input type="radio" name="size" value="XS"><span>XS</span></label>
+              <label class="size"><input type="radio" name="size" value="S"><span>S</span></label>
+              <label class="size"><input type="radio" name="size" value="M" checked><span>M</span></label>
+              <label class="size"><input type="radio" name="size" value="L"><span>L</span></label>
+              <label class="size"><input type="radio" name="size" value="XL"><span>XL</span></label>
+            </div>
+          </fieldset>
+ 
+          <div class="buy-row">
+            <div class="qty" role="group" aria-label="Quantity">
+              <button type="button" class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+              <input type="number" id="qty-input" name="quantity" value="1" min="1" max="10" inputmode="numeric" aria-label="Quantity">
+              <button type="button" class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+            </div>
+            <button type="submit" class="btn-add" id="add-to-cart">Add to Cart</button>
+            <button type="button" class="btn-wish" id="wishlist" aria-pressed="false" aria-label="Add to wishlist">♡</button>
+          </div>
+ 
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+ 
+        <hr class="divider">
+      </div>
+    </section>
+ 
+    <section class="tabs" aria-label="Product details">
+      <div class="tab-list" role="tablist" aria-label="Product information">
+        <button type="button" role="tab" class="tab is-active" id="tab-description" aria-controls="panel-description" aria-selected="true">Description</button>
+        <button type="button" role="tab" class="tab" id="tab-reviews" aria-controls="panel-reviews" aria-selected="false" tabindex="-1">Reviews</button>
+      </div>
+ 
+      <div class="tab-panels">
+        <div role="tabpanel" class="tab-panel is-active" id="panel-description" aria-labelledby="tab-description">
+          <div id="product-description">
+          <p>
+            This is where the full product description goes. Cover what the product is made of,
+            how it fits or works, and anything a shopper should know before buying.
+          </p>
+          <p>
+            A second paragraph can explain care instructions, shipping details, or the story
+            behind the product.
+          </p>
+          <ul>
+            <li>Key feature or specification one</li>
+            <li>Key feature or specification two</li>
+            <li>Key feature or specification three</li>
+          </ul>
+          </div>
+        </div>
+ 
+        <div role="tabpanel" class="tab-panel" id="panel-reviews" aria-labelledby="tab-reviews" hidden>
+          <p>No reviews yet. Be the first to review this product.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="related" aria-labelledby="related-title">
+      <h2 id="related-title">Related Products</h2>
+      <div class="related-grid" id="related-grid">
+ 
+        <article class="card">
+          <div class="card-image placeholder"><span>Image</span></div>
+          <div class="card-body">
+            <h3 class="card-title">Related Product One</h3>
+            <p class="card-meta">Short product description</p>
+            <p class="card-price">€ 79,00</p>
+            <button type="button" class="btn-card" data-name="Related Product One" data-category="schoenen" data-price="79.00">Add to Cart</button>
+          </div>
+        </article>
+ 
+        <article class="card">
+          <div class="card-image placeholder"><span>Image</span></div>
+          <div class="card-body">
+            <h3 class="card-title">Related Product Two</h3>
+            <p class="card-meta">Short product description</p>
+            <p class="card-price">€ 89,00</p>
+            <button type="button" class="btn-card" data-name="Related Product Two" data-category="schoenen" data-price="89.00">Add to Cart</button>
+          </div>
+        </article>
+ 
+        <article class="card">
+          <div class="card-image placeholder"><span>Image</span></div>
+          <div class="card-body">
+            <h3 class="card-title">Related Product Three</h3>
+            <p class="card-meta">Short product description</p>
+            <p class="card-price">€ 109,00</p>
+            <button type="button" class="btn-card" data-name="Related Product Three" data-category="schoenen" data-price="109.00">Add to Cart</button>
+          </div>
+        </article>
+ 
+        <article class="card">
+          <div class="card-image placeholder"><span>Image</span></div>
+          <div class="card-body">
+            <h3 class="card-title">Related Product Four</h3>
+            <p class="card-meta">Short product description</p>
+            <p class="card-price">€ 59,00</p>
+            <button type="button" class="btn-card" data-name="Related Product Four" data-category="schoenen" data-price="59.00">Add to Cart</button>
+          </div>
+        </article>
+ 
+      </div>
+    </section>
+ 
+  </main>
+ 
+</body>
+</html>

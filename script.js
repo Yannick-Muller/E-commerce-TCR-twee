@@ -189,6 +189,13 @@ const updateCart = () => {
       `Totaal: €${total.toFixed(2).replace(".", ",")}`;
   }
 
+   // Teller in de navigatiebalk (als die op de pagina staat).
+  const cartCountEl = document.querySelector("#cart-count");
+
+  if (cartCountEl) {
+    cartCountEl.textContent = cart.length;
+  }
+
   // Pas elke winkelwagenknop aan.
   cartButtons.forEach((button) => {
     const card = button.closest(".product-card");
@@ -270,10 +277,55 @@ cartButtons.forEach((button) => {
 });
 
 // ============================================================
+// 10b. PRODUCTKAARTEN KLIKBAAR MAKEN
+// ============================================================
+ 
+// Afbeelding en naam linken naar product.html?id=...
+// Op pages/categories.html moet het pad één map omhoog.
+const pagesPrefix = window.location.pathname.includes("/pages/") ? "../" : "";
+ 
+document.querySelectorAll(".product-card[data-product-id]").forEach((card) => {
+  const url = `${pagesPrefix}product.html?id=${encodeURIComponent(card.dataset.productId)}`;
+ 
+  const img = card.querySelector(".product-image img");
+ 
+  if (img && !img.closest("a")) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("aria-label", `Bekijk ${card.dataset.name}`);
+    img.replaceWith(link);
+    link.appendChild(img);
+  }
+ 
+  const title = card.querySelector(".product-name");
+ 
+  if (title && !title.querySelector("a")) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = title.textContent;
+    title.textContent = "";
+    title.appendChild(link);
+  }
+});
+ 
+// ============================================================
 // 11. PAGINA STARTEN
 // ============================================================
-
+ 
 applyFilters();
 updateCart();
+
+// Winkelwagen opnieuw inlezen als je terugkomt op deze pagina
+// (bijvoorbeeld met de terugknop vanaf de winkelwagenpagina).
+window.addEventListener("pageshow", () => {
+  try {
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart = Array.isArray(savedCart) ? savedCart : [];
+  } catch (error) {
+    console.warn("Winkelwagen kon niet geladen worden:", error);
+  }
+
+  updateCart();
+});
 
 console.log("Webshop JavaScript geladen!");

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winkelwagen | Webshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
+  <script src="products.js" defer></script>
+  <script src="cart.js" defer></script>
+</head>
+<body class="cart-page">
+
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="pages/categories.html" class="nav-link">Shop</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#help" class="nav-link">Help</a>
+      <a href="cart.html" class="nav-link nav-cart" aria-current="page">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Winkelwagen</li>
+      </ol>
+    </nav>
+
+    <h1 class="page-title">Winkelwagen</h1>
+
+    <!-- Wordt getoond als er niets in de winkelwagen zit. -->
+    <section class="cart-empty" id="cart-empty" hidden>
+      <p class="cart-empty-title">Je winkelwagen is leeg.</p>
+      <p class="cart-empty-text">Voeg producten toe om ze hier te zien.</p>
+      <a class="btn-primary" href="pages/categories.html">Verder winkelen</a>
+    </section>
+
+    <!-- Wordt getoond als er producten in de winkelwagen zitten. -->
+    <div class="cart-layout" id="cart-layout" hidden>
+
+      <section class="cart-items" aria-labelledby="cart-items-title">
+        <div class="cart-items-head">
+          <h2 id="cart-items-title">Jouw producten</h2>
+          <button type="button" class="btn-link" id="clear-cart">Winkelwagen legen</button>
+        </div>
+
+        <ul class="cart-list" id="cart-list"></ul>
+      </section>
+
+      <aside class="cart-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Overzicht</h2>
+
+        <dl class="summary-rows">
+          <div class="summary-row">
+            <dt>Aantal producten</dt>
+            <dd id="summary-count">0</dd>
+          </div>
+          <div class="summary-row summary-total">
+            <dt>Totaal</dt>
+            <dd id="summary-total">€ 0,00</dd>
+          </div>
+        </dl>
+
+        <button type="button" class="btn-primary btn-block" id="checkout">Afrekenen</button>
+        <a class="btn-secondary btn-block" href="pages/categories.html">Verder winkelen</a>
+
+        <p class="cart-status" id="cart-status" role="status" aria-live="polite"></p>
+      </aside>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
