@@ -3,133 +3,136 @@
    Zelfde grijze kleuren als de rest van de webshop,
    met het rood van het favorietenhartje als actiekleur.
    ========================================================= */
-
+ 
 /* ---------- Banner ---------- */
-
+ 
 .flash-sale {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px 24px;
-
+ 
     width: 100%;
     padding: 14px 24px;
-
+ 
     background-color: #2b2b2b;
     color: #ffffff;
-
+ 
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
-
+ 
 .flash-sale[hidden],
 .flash-sale [hidden] {
     display: none;
 }
-
+ 
 .flash-sale__title {
     font-size: 16px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
-
+ 
 .flash-sale__label {
     font-size: 13px;
     color: #d9d9d9;
 }
-
+ 
 .flash-sale__timer {
     display: flex;
     gap: 8px;
 }
-
+ 
 .flash-sale__unit {
     min-width: 54px;
     padding: 6px 8px;
-
+ 
     border-radius: 6px;
-
+ 
     background-color: #ffffff;
     color: #141414;
-
+ 
     text-align: center;
     line-height: 1.1;
 }
-
+ 
 .flash-sale__unit strong {
     display: block;
     font-size: 20px;
     font-variant-numeric: tabular-nums;
 }
-
+ 
 .flash-sale__unit span {
     font-size: 10px;
     text-transform: uppercase;
     color: #6b6b6b;
 }
-
+ 
 /* Laatste uur: rode cijfers. */
 .flash-sale.is-urgent .flash-sale__unit strong {
     color: #d81b48;
 }
-
+ 
 /* Afgelopen: de banner wordt grijs en toont een melding. */
 .flash-sale.is-ended {
     background-color: #e6e6e6;
     color: #6b6b6b;
 }
-
+ 
 .flash-sale__ended {
     font-size: 14px;
 }
-
+ 
 /* ---------- Prijzen en labels ---------- */
-
+ 
 .price-row {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 2px 8px;
 }
-
+ 
 .product-price-old,
 .price-old {
     margin: 0;
-
+ 
     color: #8a8a8a;
-    font-size: 0.85em;
+    font-size: 0.7em;
     font-weight: 400;
     text-decoration: line-through;
+ 
+    /* Doorzichtig, zodat de actieprijs opvalt. */
+    opacity: 0.55;
 }
-
+ 
 .price-old {
     margin-left: 8px;
 }
-
+ 
 .product-price.is-sale,
 .is-sale {
     color: #d81b48;
 }
-
+ 
 .sale-badge {
     display: inline-block;
-
+ 
     padding: 2px 8px;
-
+ 
     border-radius: 999px;
-
+ 
     background-color: #d81b48;
     color: #ffffff;
-
+ 
     font-size: 12px;
     font-weight: 700;
     line-height: 1.5;
 }
-
+ 
 .price-old + .sale-badge {
     margin-left: 8px;
 }
-
+ 
 /* Label linksboven in de afbeelding (het hartje staat rechtsboven). */
 .product-image .sale-badge,
 .product-card__image-wrapper .sale-badge {
@@ -138,19 +141,29 @@
     left: 10px;
     z-index: 5;
 }
-
+ 
 @media (max-width: 700px) {
     .flash-sale {
         padding: 12px 16px;
     }
-
+ 
     .flash-sale__unit {
         min-width: 46px;
     }
-
+ 
     .product-image .sale-badge,
     .product-card__image-wrapper .sale-badge {
         top: 6px;
         left: 6px;
     }
+}
+ 
+ 
+/* ---------- Productpagina: oude prijs kleiner en doorzichtig ---------- */
+ 
+.info-price .price-old {
+    font-size: 0.6em;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-left: 10px;
 }
