@@ -294,3 +294,89 @@
 @media (prefers-reduced-motion: reduce) {
   .cart-page * { transition: none !important; }
 }
+
+/* =========================================================
+   MELDING, VERLOOPDATUM EN VERLANGLIJSTJE
+   ========================================================= */
+
+/* Melding: producten automatisch uit de winkelwagen gehaald. */
+.cart-page .cart-notice {
+  margin: -8px 0 24px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.cart-page .cart-notice[hidden] { display: none; }
+
+/* Per productregel: hoe lang het product nog blijft staan. */
+.cart-page .cart-item-expiry { font-size: 12px; color: var(--danger); margin-top: 2px; }
+
+.cart-page .cart-expiry-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+
+/* ---------- Verlanglijstje ---------- */
+
+.cart-page .wishlist { margin-top: 56px; }
+
+.cart-page .wishlist-head {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-page .wishlist-head h2 { font-size: 16px; font-weight: 700; }
+
+.cart-page .wishlist-empty { padding: 20px 0; color: var(--text-muted); }
+.cart-page .wishlist-empty[hidden] { display: none; }
+
+.cart-page .wishlist-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-page .wish-item {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-page .wish-item-image {
+  display: block;
+  width: 96px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--placeholder);
+}
+
+.cart-page .wish-item-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.cart-page .wish-item-name { font-size: 14px; font-weight: 600; }
+.cart-page .wish-item-name a { text-decoration: none; }
+.cart-page .wish-item-name a:hover { text-decoration: underline; }
+
+.cart-page .wish-item-price { font-size: 14px; font-weight: 700; margin-top: 2px; }
+.cart-page .wish-item-price.is-sale { color: #d81b48; }
+.cart-page .wish-item-price .price-old { margin-left: 8px; }
+
+.cart-page .wish-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.cart-page .wish-item-actions .btn-primary { height: 34px; padding: 0 16px; }
+.cart-page .wish-item-actions .btn-primary:disabled { opacity: 0.5; cursor: default; }
+
+@media (max-width: 900px) {
+  .cart-page .wishlist-list { grid-template-columns: 1fr; }
+}

@@ -258,6 +258,7 @@ cartButtons.forEach((button) => {
         category: category,
         price: price,
         image: image,
+        addedAt: Date.now(), // voor het verlopen na 3 dagen (cart-expiry.js)
       });
     }
 
@@ -318,6 +319,19 @@ updateCart();
 // Winkelwagen opnieuw inlezen als je terugkomt op deze pagina
 // (bijvoorbeeld met de terugknop vanaf de winkelwagenpagina).
 window.addEventListener("pageshow", () => {
+  try {
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart = Array.isArray(savedCart) ? savedCart : [];
+  } catch (error) {
+    console.warn("Winkelwagen kon niet geladen worden:", error);
+  }
+
+  updateCart();
+});
+
+// Items die langer dan 3 dagen in de winkelwagen stonden zijn verwijderd
+// (cart-expiry.js): lees de winkelwagen opnieuw in.
+window.addEventListener("cart:expired", () => {
   try {
     const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     cart = Array.isArray(savedCart) ? savedCart : [];

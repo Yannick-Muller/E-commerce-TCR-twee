@@ -23,6 +23,8 @@ const startCart = () => {
   const clearButton = document.getElementById("clear-cart");
   const checkoutButton = document.getElementById("checkout");
   const statusEl = document.getElementById("cart-status");
+  const noticeEl = document.getElementById("cart-notice");
+  const expiryNoteEl = document.getElementById("cart-expiry-note");
 
   const euro = (n) => "€ " + n.toFixed(2).replace(".", ",");
 
@@ -49,6 +51,8 @@ const startCart = () => {
     } catch (error) {
       console.warn("Winkelwagen kon niet opgeslagen worden:", error);
     }
+
+    window.dispatchEvent(new Event("cart:changed"));
   }
 
   function priceOf(item) {
@@ -61,14 +65,23 @@ const startCart = () => {
     const groups = new Map();
 
     cart.forEach((item) => {
+      const addedAt = Number(item.addedAt);
+
       if (groups.has(item.name)) {
-        groups.get(item.name).qty += 1;
+        const group = groups.get(item.name);
+        group.qty += 1;
+
+        // Het oudste exemplaar bepaalt wanneer de regel verloopt.
+        if (Number.isFinite(addedAt) && (!group.addedAt || addedAt < group.addedAt)) {
+          group.addedAt = addedAt;
+        }
       } else {
         groups.set(item.name, {
           name: item.name,
           category: item.category || "",
           price: priceOf(item),
           image: item.image || "",
+          addedAt: Number.isFinite(addedAt) ? addedAt : 0,
           qty: 1,
         });
       }
@@ -100,7 +113,7 @@ const startCart = () => {
       return;
     }
 
-    cart.push({ ...template });
+    cart.push({ ...template, addedAt: Date.now() });
     saveCart(cart);
     setStatus("");
     render();
@@ -132,6 +145,41 @@ const startCart = () => {
     saveCart([]);
     setStatus("Je winkelwagen is geleegd.");
     render();
+  }
+
+  // ============================================================
+  // VERLOPEN NA 3 DAGEN (zie cart-expiry.js)
+  // ============================================================
+
+  // "Verloopt over 2 dagen" / "Verloopt over 5 uur"
+  function expiryText(addedAt) {
+    if (!window.CartExpiry || !addedAt) return "";
+
+    const remaining = window.CartExpiry.expiresAt({ addedAt }) - Date.now();
+    const DAY = 24 * 60 * 60 * 1000;
+
+    if (remaining <= DAY) {
+      const hours = Math.max(1, Math.ceil(remaining / (60 * 60 * 1000)));
+      return `Verloopt over ${hours} uur`;
+    }
+
+    return `Verloopt over ${Math.ceil(remaining / DAY)} dagen`;
+  }
+
+  // Laat zien welke producten automatisch zijn verwijderd.
+  function showExpiredNotice() {
+    if (!window.CartExpiry || !noticeEl) return;
+
+    const names = window.CartExpiry.takeRemoved();
+    if (names.length === 0) return;
+
+    const days = window.CartExpiry.maxDays;
+
+    noticeEl.textContent =
+      names.length === 1
+        ? `${names[0]} is uit je winkelwagen gehaald, omdat het langer dan ${days} dagen niet is gekocht.`
+        : `${names.join(", ")} zijn uit je winkelwagen gehaald, omdat ze langer dan ${days} dagen niet zijn gekocht.`;
+    noticeEl.hidden = false;
   }
 
   // ============================================================
@@ -175,6 +223,10 @@ const startCart = () => {
     unit.className = "cart-item-unit";
     unit.textContent = `${euro(group.price)} per stuk`;
 
+    const expiry = document.createElement("p");
+    expiry.className = "cart-item-expiry";
+    expiry.textContent = expiryText(group.addedAt);
+
     const actions = document.createElement("div");
     actions.className = "cart-item-actions";
 
@@ -214,7 +266,9 @@ const startCart = () => {
     remove.addEventListener("click", () => removeProduct(group.name));
 
     actions.append(qtyBox, remove);
-    info.append(name, unit, actions);
+    info.append(name, unit);
+    if (expiry.textContent) info.appendChild(expiry);
+    info.appendChild(actions);
 
     // Regeltotaal
     const total = document.createElement("p");
@@ -226,6 +280,15 @@ const startCart = () => {
   }
 
   function render() {
+    // Verlopen producten eerst verwijderen, daarna pas inlezen.
+    if (window.CartExpiry) window.CartExpiry.purge();
+    showExpiredNotice();
+
+    if (expiryNoteEl && window.CartExpiry) {
+      expiryNoteEl.textContent =
+        `Producten die je ${window.CartExpiry.maxDays} dagen niet koopt, worden automatisch uit je winkelwagen gehaald.`;
+    }
+
     const cart = loadCart();
     const groups = groupCart(cart);
 
@@ -272,6 +335,12 @@ const startCart = () => {
 
   // Terugkomen met de terugknop: lees de winkelwagen opnieuw in.
   window.addEventListener("pageshow", render);
+
+  // Een product is toegevoegd of verwijderd (bijv. vanuit het verlanglijstje).
+  window.addEventListener("cart:changed", render);
+
+  // Automatische controle heeft verlopen producten verwijderd.
+  window.addEventListener("cart:expired", render);
 
   // De flash sale is afgelopen: prijzen zijn aangepast.
   window.addEventListener("flashsale:ended", render);

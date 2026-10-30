@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="sale.css">
-  <script src="products-loader.js" data-then="sale.js,cart.js"></script>
+  <script src="cart-expiry.js"></script>
+  <script src="products-loader.js" data-then="sale.js,cart.js,wishlist.js"></script>
 </head>
 <body class="cart-page">
 
@@ -34,6 +35,9 @@
     </nav>
 
     <h1 class="page-title">Winkelwagen</h1>
+
+    <!-- Melding als producten automatisch uit de winkelwagen zijn gehaald. -->
+    <p class="cart-notice" id="cart-notice" role="status" aria-live="polite" hidden></p>
 
     <!-- Wordt getoond als er niets in de winkelwagen zit. -->
     <section class="cart-empty" id="cart-empty" hidden>
@@ -71,10 +75,28 @@
         <button type="button" class="btn-primary btn-block" id="checkout">Afrekenen</button>
         <a class="btn-secondary btn-block" href="pages/categories.html">Verder winkelen</a>
 
+        <p class="cart-expiry-note" id="cart-expiry-note"></p>
+
         <p class="cart-status" id="cart-status" role="status" aria-live="polite"></p>
       </aside>
 
     </div>
+
+    <!-- Verlanglijstje: de producten die je met het hartje hebt geliket.
+         Wordt gevuld door wishlist.js. -->
+    <section class="wishlist" id="wishlist" aria-labelledby="wishlist-title">
+      <div class="wishlist-head">
+        <h2 id="wishlist-title">Verlanglijstje (<span id="wishlist-count">0</span>)</h2>
+      </div>
+
+      <p class="wishlist-empty" id="wishlist-empty" hidden>
+        Je verlanglijstje is leeg. Klik op het hartje bij een product om het hier te bewaren.
+      </p>
+
+      <ul class="wishlist-list" id="wishlist-list"></ul>
+
+      <p class="cart-status" id="wishlist-status" role="status" aria-live="polite"></p>
+    </section>
 
   </main>
 

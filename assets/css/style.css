@@ -323,3 +323,44 @@ main{
 
 
 
+
+/* ===== Categoriefilter ===== */
+.categories__list button{
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    transition: var(--transition__mid);
+}
+
+.categories__list button:hover{
+    color: rebeccapurple;
+}
+
+.categories__list button[aria-pressed="true"]{
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.categories__list button:focus-visible{
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Verborgen kaarten (zoeken/filteren) */
+.product-card[hidden]{
+    display: none;
+}
+
+/* Melding als er geen producten zijn gevonden */
+.categories__empty{
+    grid-column: 1 / -1;
+}
+
+.categories__empty[hidden]{
+    display: none;
+}
