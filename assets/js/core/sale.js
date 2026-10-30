@@ -2,9 +2,9 @@
 
 // ============================================================
 // FLASH SALE
-// - Instellingen (einddatum) staan in products.js: window.FLASH_SALE
-// - Kortingsprijs per product staat in products.js: salePrice
-// - Dit bestand moet NA products.js en VOOR home-products.js,
+// - Instellingen (einddatum) staan in products.json: window.FLASH_SALE
+// - Kortingsprijs per product staat in products.json: salePrice
+// - Dit bestand moet NA products.json en VOOR home-products.js,
 //   script.js en product.js geladen worden.
 //
 // Testen zonder te wachten: voeg ?sale-test=15 aan een URL toe

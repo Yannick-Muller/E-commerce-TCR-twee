@@ -11,20 +11,20 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
 
     <!-- Nieuwe vormgeving voor favorieten. -->
-    <link rel="stylesheet" href="../favorites.css" />
+    <link rel="stylesheet" href="../assets/css/favorites.css" />
 
     <!-- Flash sale: countdown en kortingsprijzen. -->
-    <link rel="stylesheet" href="../sale.css" />
+    <link rel="stylesheet" href="../assets/css/sale.css" />
 
     <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan. -->
-    <script src="../cart-expiry.js"></script>
+    <script src="../assets/js/core/cart-expiry.js"></script>
 
     <!-- Haalt products.json op met fetch() en laadt daarna de scripts
          hieronder in deze volgorde: flash sale, productkaarten,
          zoekfunctie en favorieten. -->
     <script
-      src="../products-loader.js"
-      data-then="../sale.js,../shop-products.js,../assets/js/searchbar.js,../assets/js/category-filter.js,../favorites.js"
+      src="../assets/js/core/products-loader.js"
+      data-then="../assets/js/core/sale.js,../assets/js/shop/shop-products.js,../assets/js/shop/searchbar.js,../assets/js/shop/category-filter.js,../assets/js/core/favorites.js"
     ></script>
   </head>
 

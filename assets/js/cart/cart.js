@@ -90,7 +90,7 @@ const startCart = () => {
     return [...groups.values()];
   }
 
-  // Zoek het id in products.js, zodat de naam naar de productpagina kan linken.
+  // Zoek het id in products.json, zodat de naam naar de productpagina kan linken.
   function findProductId(name) {
     const all = window.PRODUCTS || {};
     const found = Object.entries(all).find(([, p]) => p.name === name);

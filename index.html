@@ -8,17 +8,17 @@
     <title>Webshop</title>
 
     <!-- Bestaande vormgeving behouden. -->
-    <link rel="stylesheet" href="style-nikan.css" />
+    <link rel="stylesheet" href="assets/css/style-nikan.css" />
 
     <!-- Nieuwe vormgeving voor favorieten. -->
-    <link rel="stylesheet" href="favorites.css" />
+    <link rel="stylesheet" href="assets/css/favorites.css" />
 
     <!-- Flash sale: countdown en kortingsprijzen. -->
-    <link rel="stylesheet" href="sale.css" />
+    <link rel="stylesheet" href="assets/css/sale.css" />
 
     <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan.
          Moet vóór de andere scripts geladen worden. -->
-    <script src="cart-expiry.js"></script>
+    <script src="assets/js/core/cart-expiry.js"></script>
   </head>
 
   <body>
@@ -163,8 +163,8 @@
          hieronder in deze volgorde: flash sale, productkaarten,
          zoeken/filteren/winkelwagen en favorieten. -->
     <script
-      src="products-loader.js"
-      data-then="sale.js,home-products.js,script.js,favorites.js"
+      src="assets/js/core/products-loader.js"
+      data-then="assets/js/core/sale.js,assets/js/home/home-products.js,assets/js/home/script.js,assets/js/core/favorites.js"
     ></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 "use strict";
 
 // ============================================================
-// PRODUCTKAARTEN INLADEN UIT products.js
+// PRODUCTKAARTEN INLADEN UIT products.json
 // Werkt op index.html en op pages/categories.html.
-// Dit bestand moet NA products.js en sale.js, en VOOR script.js
+// Dit bestand moet NA products.json en sale.js, en VOOR script.js
 // en favorites.js geladen worden, zodat zoeken, filteren,
 // favorieten en winkelwagen de kaarten vinden.
 // ============================================================

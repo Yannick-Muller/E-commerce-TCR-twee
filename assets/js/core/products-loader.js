@@ -9,17 +9,17 @@
 // en laadt DAARNA pas de scripts uit data-then (in die volgorde).
 //
 // Gebruik, bijvoorbeeld op index.html:
-//   <script src="products-loader.js"
-//           data-then="sale.js,home-products.js,script.js,favorites.js"></script>
+//   <script src="assets/js/core/products-loader.js"
+//           data-then="assets/js/core/sale.js,assets/js/home/home-products.js,assets/js/home/script.js,assets/js/core/favorites.js"></script>
 //
 // De paden in data-then zijn relatief aan de pagina, net als een gewone <script src>.
-// products.json moet naast dit bestand staan.
+// products.json staat in assets/data/.
 // ============================================================
 
 (function () {
   const loader = document.currentScript;
-  const base = loader.src.slice(0, loader.src.lastIndexOf("/") + 1);
-  const jsonUrl = base + "products.json";
+  // products.json staat in assets/data/ (twee mappen omhoog vanaf assets/js/core/).
+  const jsonUrl = new URL("../../data/products.json", loader.src).href;
 
   const scripts = (loader.dataset.then || "")
     .split(",")
