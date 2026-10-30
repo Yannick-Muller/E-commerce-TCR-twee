@@ -16,8 +16,15 @@
     width: 100%;
     padding: 14px 24px;
  
-    background-color: #2b2b2b;
+    /* Rood en geel lopen vloeiend in elkaar over en schuiven van links
+       naar rechts (de patroonbreedte staat in background-size). */
+    background-color: #d81b48;
+    background-image: linear-gradient(90deg, #d81b48, #ffc400, #d81b48);
+    background-size: 400px 100%;
+    background-repeat: repeat-x;
     color: #ffffff;
+
+    animation: flash-sale-tape 6s linear infinite;
  
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
@@ -76,6 +83,8 @@
 /* Afgelopen: de banner wordt grijs en toont een melding. */
 .flash-sale.is-ended {
     background-color: #e6e6e6;
+    background-image: none;
+    animation: none;
     color: #6b6b6b;
 }
  
@@ -166,4 +175,40 @@
     font-weight: 400;
     opacity: 0.5;
     margin-left: 10px;
+}
+
+/* ---------- Bewegende rood-gele band ---------- */
+
+/* Het patroon schuift precies één patroonbreedte op, dus de lus is naadloos. */
+@keyframes flash-sale-tape {
+    from { background-position: 0 0; }
+    to   { background-position: 400px 0; }
+}
+
+/* Witte tekst op geel is slecht leesbaar: titel en label krijgen een donker
+   label, de cijfers staan al in witte vakjes. */
+.flash-sale__title,
+.flash-sale__label {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.flash-sale__unit {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Afgelopen: geen donker label meer. */
+.flash-sale.is-ended .flash-sale__title {
+    padding: 0;
+    background: none;
+    color: inherit;
+}
+
+/* Geen beweging voor wie dat liever niet heeft: de kleurovergang blijft staan. */
+@media (prefers-reduced-motion: reduce) {
+    .flash-sale {
+        animation: none;
+    }
 }
