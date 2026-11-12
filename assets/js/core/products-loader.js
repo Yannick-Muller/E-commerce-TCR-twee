@@ -29,6 +29,11 @@
   window.PRODUCTS = {};
   window.FLASH_SALE = {};
 
+  function hideLoading() {
+  const loading = document.getElementById("products-loading");
+  if (loading) loading.hidden = true;
+  }
+
   function onReady(callback) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback);
@@ -82,5 +87,8 @@
       console.error("Producten konden niet geladen worden:", error);
       showError();
     })
-    .finally(loadScripts);
+    .finally(() => {
+      hideLoading();
+      loadScripts();
+    });
 })();
