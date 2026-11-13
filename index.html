@@ -10,11 +10,17 @@
     <!-- Bestaande vormgeving behouden. -->
     <link rel="stylesheet" href="assets/css/style-nikan.css" />
 
+    <!-- Header (navigatie + zoekbalk), op alle pagina's hetzelfde. -->
+    <link rel="stylesheet" href="assets/css/header.css" />
+
     <!-- Nieuwe vormgeving voor favorieten. -->
     <link rel="stylesheet" href="assets/css/favorites.css" />
 
     <!-- Flash sale: countdown en kortingsprijzen. -->
     <link rel="stylesheet" href="assets/css/sale.css" />
+
+    <!-- Loading state en foutmelding bij het ophalen van producten. -->
+    <link rel="stylesheet" href="assets/css/loading.css" />
 
     <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan.
          Moet vóór de andere scripts geladen worden. -->
@@ -24,21 +30,21 @@
   <body>
     <div class="app">
       <!-- =====================================================
-           NAVIGATIE
+           HEADER (op alle pagina's hetzelfde, zie assets/css/header.css)
            ===================================================== -->
 
-      <nav class="navbar">
-        <a href="index.html" class="nav-link active"> Home </a>
+<header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+          <a href="index.html" class="nav-link" aria-current="page">Home</a>
+          <a href="pages/categories.html" class="nav-link">Shop</a>
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#help" class="nav-link">Help</a>
+          <a href="cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+        </nav>
 
-        <a href="pages/categories.html" class="nav-link"> Shop </a>
-
-        <a href="#about" class="nav-link"> About </a>
-
-        <a href="#help" class="nav-link"> Help </a>
-      </nav>
-
-      <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
-      <div id="flash-sale"></div>
+        <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
+        <div id="flash-sale"></div>
+      </header>
 
       <!-- =====================================================
            LOGO
@@ -57,12 +63,11 @@
 
         <section class="search-section">
           <div class="search-box">
-            <span class="search-icon">🔍</span>
-
             <input
               type="text"
               id="search-input"
               placeholder="Zoek producten..."
+              aria-label="Zoek producten"
             />
           </div>
         </section>
@@ -128,14 +133,7 @@
           <div class="section-header">
             <h2>Populaire producten</h2>
           </div>
-          
-          <!-- Loading indicator -->
-          <div id="products-loading" role="status">
-            <div class="spinner"></div>
-            <p>Producten worden geladen...</p>
-          </div>
 
-          <!-- Producten -->
           <div class="products" id="products">
             <!-- De kaarten worden ingeladen door home-products.js -->
           </div>

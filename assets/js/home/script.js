@@ -4,17 +4,8 @@
 // 1. NAVIGATIE
 // ============================================================
 
-const navLinks = document.querySelectorAll(".nav-link");
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.forEach((item) => {
-      item.classList.remove("active");
-    });
-
-    link.classList.add("active");
-  });
-});
+// De actieve link staat in de HTML (aria-current="page") en wordt
+// gestyled in assets/css/header.css. Hier is niets meer voor nodig.
 
 // ============================================================
 // 2. PRODUCTEN EN ZOEKBALK

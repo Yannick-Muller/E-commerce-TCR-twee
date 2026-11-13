@@ -18,11 +18,9 @@
     --secondary-text-color: #24294a;
 
     /* Padding */
-    --nav-pd: clamp(1.5rem, 2vw, 3.5rem) clamp(2.5rem, 5vw, 6.5rem);
     --section-pd: clamp(2.5rem, 5vw, 6.5rem);
 
     /* SVG Sizing (wd = width) */
-    --primary-svg-wd: clamp(.75rem, 1.5vw, 2rem);
 
     /* Border Radius */
     --main-br: 3px;
@@ -53,121 +51,7 @@ body {
 
 
 
-/* ===== NAV ===== */
-.nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--nav-pd);
-    background-color: var(--primary-color);
-    gap: clamp(2.5rem, 5vw, 6rem);
-    border-bottom: var(--primary-border);
-    width: 100%;
-}
-
-/* ----- Nav Input ----- */
-.nav__input{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    border-radius: var(--main-br);
-    width: clamp(5rem, 40vw,50rem);
-    border: var(--primary-border);
-}
-
-.nav__input input{
-    border: var(--primary-border);
-    width: 100%;
-    height: 100%;
-    padding: 1vw;
-    border: none;
-    outline: none;
-    padding-right: calc(var(--primary-svg-wd) + 1.5vw);
-    transition: var(--transition__mid);
-}
-
-.nav__input input:hover,
-.nav__input input:focus{
-    filter: brightness(85%);
-}
-
-.nav__input svg{
-    height: auto;
-    width: var(--primary-svg-wd);
-    position: absolute;
-    right: .75vw;
-    z-index: 1;
-    pointer-events: none;
-    color: var(--secondary-color);
-}
-
-/* ----- Nav Content ----- */
-.nav__content{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: clamp(1rem, 1.3vw, 2rem);
-}
-
-.nav__content li{
-    position: relative;
-    list-style: none;
-    padding: 0 clamp(.75rem, 1.5vw, 2rem);
-}
-
-.nav__content li:first-child {
-    padding-left: 0;
-}
-
-.nav__content li:last-child {
-    padding-right: 0;
-}
-
-.nav__content li:not(:last-child) {
-    border-right: 1px solid var(--secondary-color);
-}
-
-.nav__content a{
-    text-decoration: none;
-    color: var(--secondary-text-color);
-    transition: var(--transition__mid);
-    font-weight: 500;
-}
-
-.nav__content a:hover{
-    color: rebeccapurple;
-}
-
-@media (max-width: 768px) {
-    .nav {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem;
-        gap: clamp(1rem, 7vw, 8rem);
-        flex-direction: row;
-        align-items: stretch;
-    }
-
-    .nav__input {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* .nav__content {
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        justify-content: space-between;
-    } */
-
-    .nav__content li {
-        padding: 0 .5rem;
-        min-width: 0;
-    }
-}
+/* ===== NAV: staat nu in header.css (op alle pagina's hetzelfde) ===== */
 
 
 /* ===== Catogries page ===== */
@@ -191,13 +75,50 @@ main{
     text-transform: uppercase;
 }
 
-.categories__list li{
+.categories__list li {
     list-style: none;
+    position: relative;
+    width: fit-content;
+    z-index: 1;
 }
 
 .categories__list a{
     text-decoration: none;
     color: var(--secondary-text-color);
+}
+
+.feature-flash {
+    position: relative;
+}
+
+.feature-flash::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, .10),
+        rgba(199, 194, 194, 0.35),
+        rgba(255, 0, 0, .10)
+    );
+
+    opacity: 0;
+    animation: boxFlash 2s infinite ease-in-out;
+}
+
+@keyframes boxFlash {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* ----- Filter ----- */
@@ -363,4 +284,9 @@ main{
 
 .categories__empty[hidden]{
     display: none;
+}
+
+/* Zoekbalk bovenaan de shoppagina: over de volle breedte van het grid. */
+.categories__search{
+    grid-column: 1 / -1;
 }

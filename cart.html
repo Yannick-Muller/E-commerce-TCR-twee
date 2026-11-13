@@ -7,14 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/header.css">
   <link rel="stylesheet" href="assets/css/cart.css">
   <link rel="stylesheet" href="assets/css/sale.css">
+  <link rel="stylesheet" href="assets/css/loading.css">
   <script src="assets/js/core/cart-expiry.js"></script>
   <script src="assets/js/core/products-loader.js" data-then="assets/js/core/sale.js,assets/js/cart/cart.js,assets/js/cart/wishlist.js"></script>
 </head>
 <body class="cart-page">
 
-  <header>
+  <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
       <a href="index.html" class="nav-link">Home</a>
       <a href="pages/categories.html" class="nav-link">Shop</a>
@@ -22,7 +24,9 @@
       <a href="index.html#help" class="nav-link">Help</a>
       <a href="cart.html" class="nav-link nav-cart" aria-current="page">Cart (<span id="cart-count">0</span>)</a>
     </nav>
-  <div id="flash-sale"></div>
+
+    <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
+    <div id="flash-sale"></div>
   </header>
 
   <main class="container">

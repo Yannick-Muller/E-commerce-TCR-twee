@@ -10,11 +10,17 @@
     <!-- Bestaande vormgeving van de shoppagina. -->
     <link rel="stylesheet" href="../assets/css/style.css" />
 
+    <!-- Header (navigatie + zoekbalk), op alle pagina's hetzelfde. -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
     <!-- Nieuwe vormgeving voor favorieten. -->
     <link rel="stylesheet" href="../assets/css/favorites.css" />
 
     <!-- Flash sale: countdown en kortingsprijzen. -->
     <link rel="stylesheet" href="../assets/css/sale.css" />
+
+    <!-- Loading state en foutmelding bij het ophalen van producten. -->
+    <link rel="stylesheet" href="../assets/css/loading.css" />
 
     <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan. -->
     <script src="../assets/js/core/cart-expiry.js"></script>
@@ -30,77 +36,49 @@
 
   <body>
     <!-- =====================================================
-         NAVIGATIE
+         HEADER (op alle pagina's hetzelfde, zie assets/css/header.css)
          ===================================================== -->
 
-    <nav class="nav">
-      <div class="nav__input">
-        <input type="search" placeholder="search..." />
+<header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="categories.html" class="nav-link" aria-current="page">Shop</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../index.html#help" class="nav-link">Help</a>
+        <a href="../cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
 
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></g>
-
-          <g id="SVGRepo_iconCarrier">
-            <path
-              d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </g>
-        </svg>
-      </div>
-
-      <ul class="nav__content">
-        <li class="nav__content--item">
-          <a href="../index.html">Home</a>
-        </li>
-
-        <li class="nav__content--item">
-          <a href="./categories.html">Shop</a>
-        </li>
-
-        <li class="nav__content--item">
-          <a href="">About</a>
-        </li>
-
-        <li class="nav__content--item">
-          <a href="">Help</a>
-        </li>
-
-        <li class="nav__content--item">
-          <a href="../cart.html">Cart (<span id="cart-count">0</span>)</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
-    <div id="flash-sale"></div>
+      <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
+      <div id="flash-sale"></div>
+    </header>
 
     <main class="categories">
+      <!-- Zoekbalk (zonder icoon) -->
+      <section class="search-section categories__search">
+        <div class="search-box">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Zoek producten..."
+            aria-label="Zoek producten"
+          />
+        </div>
+      </section>
+
       <!-- =================================================
            ZIJBALK
            ================================================= -->
 
       <aside class="categories__sidebar">
-        <p>New Arrivals</p>
 
         <h2>New Ins</h2>
 
         <ul class="categories__list">
           <h3>Feature</h3>
-
-          <li><a href="">Text</a></li>
-          <li><a href="">Text</a></li>
-          <li><a href="">Text</a></li>
-          <li><a href="">Text</a></li>
+          <p>New Arrivals</p>
+          <li class="feature-flash"><a href="">Sneakers</a></li>
+          <li class="feature-flash"><a href="">T-shirt</a></li>
+          <li class="feature-flash"><a href="">Koptelefoon</a></li>
         </ul>
 
         <!-- Categoriefilter: de knoppen worden door category-filter.js
@@ -108,25 +86,6 @@
         <ul class="categories__list" id="category-filter">
           <h3>Shop category</h3>
         </ul>
-
-        <div class="categories__filter">
-          <p>Filter (<span id="filter-count">0</span>)</p>
-
-          <p>size</p>
-
-          <div class="categories__sizes">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
-          </div>
-        </div>
       </aside>
 
       <!-- =================================================
