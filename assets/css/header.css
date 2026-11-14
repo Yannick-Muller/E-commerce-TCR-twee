@@ -2,11 +2,13 @@
    HEADER OP ALLE PAGINA'S (navigatie + zoekbalk)
 
    Dit is de enige plek met navigatie- en zoekbalkstijlen.
-   - Navigatie: index.html, cart.html, product.html, pages/categories.html
-   - Zoekbalk:  index.html en pages/categories.html
+   - Navigatie: index.html, cart.html, product.html, pages/categories.html,
+     pages/help.html
+   - Zoekbalk:  index.html, pages/categories.html en pages/help.html
 
-   De selectors zijn bewust .navbar .nav-link (specifieker dan .cart-page a
-   en .product-page a), zodat de kleuren overal hetzelfde blijven.
+   Rood met gouden letters. De selectors zijn bewust .navbar .nav-link
+   (specifieker dan .cart-page a en .product-page a), zodat de kleuren
+   overal hetzelfde blijven.
    ========================================================= */
 
 /* ---------- Navigatie ---------- */
@@ -16,18 +18,23 @@
 }
 
 .navbar {
+    --nav-gap: 70px;
+    --gold: #ffd54a;       /* letters */
+    --gold-line: #f5c542;  /* lijntjes en randen */
+    --gold-pale: #fff3c4;  /* actieve link en hover */
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0 70px;
+    gap: 0 var(--nav-gap);
 
     width: 100%;
-    padding: clamp(1.5rem, 2vw, 3.5rem) clamp(2.5rem, 5vw, 6.5rem);
+    padding: clamp(1.25rem, 1.6vw, 2.5rem) clamp(2.5rem, 5vw, 6.5rem);
 
-    background-color: #8e8e8e;
-    border-bottom: 1px solid #343333;
+    background: linear-gradient(180deg, #b80f2c 0%, #940b23 100%);
+    border-bottom: 3px solid var(--gold-line);
 
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
@@ -36,23 +43,44 @@
 .navbar .nav-link {
     position: relative;
 
-    padding: 20px 10px 17px;
+    padding: 18px 10px 15px;
 
-    color: #24294a;
+    color: var(--gold);
     text-decoration: none;
-    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 
-    transition: 0.2s;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    transition: color 0.2s, background-color 0.2s;
 }
 
 .navbar .nav-link:hover {
-    color: #555555;
+    color: var(--gold-pale);
 }
 
-/* De pagina waar je nu bent: vet met een lijntje eronder. */
+/* Een gouden ruitje in de ruimte tussen twee links. */
+.navbar .nav-link + .nav-link::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: calc(var(--nav-gap) / -2 - 3px);
+
+    width: 6px;
+    height: 6px;
+    margin-top: -3px;
+
+    background-color: var(--gold-line);
+    transform: rotate(45deg);
+}
+
+/* De pagina waar je nu bent: lichter, met een gouden lijn eronder. */
 .navbar .nav-link.active,
 .navbar .nav-link[aria-current="page"] {
-    font-weight: bold;
+    color: var(--gold-pale);
 }
 
 .navbar .nav-link.active::after,
@@ -64,13 +92,36 @@
     right: 10px;
     bottom: 0;
 
-    height: 2px;
-    background-color: #111111;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--gold-line);
 }
 
 .navbar .nav-link:focus-visible {
-    outline: 2px solid #111111;
+    outline: 2px solid var(--gold-pale);
     outline-offset: 2px;
+}
+
+/* De winkelwagen is een goud omrand knopje. */
+.navbar .nav-link.nav-cart {
+    padding: 8px 16px;
+
+    border: 2px solid var(--gold-line);
+    border-radius: 999px;
+}
+
+.navbar .nav-link.nav-cart:hover {
+    background-color: rgba(255, 213, 74, 0.18);
+}
+
+.navbar .nav-link.nav-cart::after {
+    display: none;
+}
+
+.navbar .nav-link.nav-cart[aria-current="page"] {
+    background-color: var(--gold-line);
+    color: #7a0a1e;
+    text-shadow: none;
 }
 
 /* ---------- Zoekbalk (zonder icoon) ---------- */
@@ -120,7 +171,7 @@
 
 @media (max-width: 900px) {
     .navbar {
-        gap: 0 35px;
+        --nav-gap: 35px;
     }
 }
 
@@ -130,17 +181,28 @@
     .navbar {
         justify-content: space-around;
         gap: 0;
-        padding: 0 8px;
+        padding: 0 6px;
     }
 
     .navbar .nav-link {
-        padding: 16px 8px 13px;
+        padding: 14px 6px 11px;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+    }
+
+    /* Geen ruimte tussen de links, dus ook geen ruitjes. */
+    .navbar .nav-link + .nav-link::before {
+        display: none;
     }
 
     .navbar .nav-link.active::after,
     .navbar .nav-link[aria-current="page"]::after {
-        left: 8px;
-        right: 8px;
+        left: 6px;
+        right: 6px;
+    }
+
+    .navbar .nav-link.nav-cart {
+        padding: 6px 10px;
     }
 
     .search-section {
