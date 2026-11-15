@@ -14,7 +14,7 @@
 // ============================================================
 
 (function () {
-  const searchInput = document.querySelector(".nav__input input");
+  const searchInput = document.querySelector("#search-input");
   const container = document.querySelector("#products");
 
   let activeCategory = null;

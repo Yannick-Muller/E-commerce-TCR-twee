@@ -6,9 +6,6 @@
    ========================================================= */
 
 .cart-page {
-  --nav-pd: 14px 24px;
-  --primary-border: 1px solid #6f6f6f;
-
   --bg: #ffffff;
   --surface: #f6f6f6;
   --placeholder: #e6e6e6;
@@ -50,32 +47,6 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px 64px;
-}
-
-/* ---------- Navigatie (zelfde als productpagina) ---------- */
-
-.cart-page .navbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: var(--nav-pd);
-  background-color: #8e8e8e;
-  gap: 70px;
-  border-bottom: var(--primary-border);
-  width: 100%;
-}
-
-.cart-page .nav-link {
-  color: #111;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.cart-page .nav-link:hover,
-.cart-page .nav-link[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 6px;
 }
 
 /* ---------- Broodkruimels en titel ---------- */
@@ -283,7 +254,6 @@
 }
 
 @media (max-width: 640px) {
-  .cart-page .navbar { flex-wrap: wrap; gap: 12px 28px; }
   .cart-page .container { padding: 0 16px 48px; }
 
   .cart-page .cart-item { grid-template-columns: 72px minmax(0, 1fr); }

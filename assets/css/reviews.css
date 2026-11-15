@@ -1,0 +1,309 @@
+/* =========================================================
+   REVIEWS OP DE PRODUCTPAGINA (reviews.css)
+   Alle regels staan onder .product-page, net als product.css.
+   Wordt NA product.css geladen.
+   ========================================================= */
+
+/* ---------- Beoordeling bij de titel ---------- */
+
+.product-page .info-rating {
+    margin-top: 6px;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.product-page .info-rating:empty {
+    display: none;
+}
+
+.product-page .rating-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0;
+    border: 0;
+    background: none;
+
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.product-page .rating-link:hover {
+    color: var(--text);
+}
+
+/* ---------- Sterren ---------- */
+
+.product-page .stars {
+    display: inline-flex;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.product-page .stars-on {
+    color: #e0a100;
+}
+
+.product-page .stars-off {
+    color: #c9c9c9;
+}
+
+/* ---------- Samenvatting ---------- */
+
+.product-page .reviews-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.product-page .reviews-average {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+}
+
+.product-page .reviews-summary .stars {
+    font-size: 20px;
+}
+
+.product-page .reviews-count,
+.product-page .reviews-none {
+    color: var(--text-muted);
+}
+
+/* ---------- Formulier ---------- */
+
+.product-page .review-form {
+    display: grid;
+    gap: 18px;
+    max-width: 560px;
+}
+
+.product-page .review-form-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.product-page .review-form-title:focus {
+    outline: none;
+}
+
+.product-page .review-field {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+}
+
+.product-page .review-field label,
+.product-page .review-field legend {
+    display: block;
+    padding: 0;
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.product-page .review-field input[type="text"],
+.product-page .review-field textarea {
+    display: block;
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+
+    background-color: #ffffff;
+    color: var(--text);
+
+    font: inherit;
+    font-size: 14px;
+}
+
+.product-page .review-field textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.product-page .review-counter {
+    display: block;
+    margin-top: 4px;
+
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: right;
+}
+
+/* Sterren kiezen. De radioknoppen staan in de HTML van 5 naar 1;
+   row-reverse zet ze weer van links naar rechts, en met de ~ selector
+   lichten alle sterren links van de aangewezen of gekozen ster op. */
+.product-page .star-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2px;
+}
+
+.product-page .star-input input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.product-page .star-input label {
+    margin: 0;
+    padding: 0 2px;
+
+    color: #c9c9c9;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+
+    transition: color 0.1s;
+}
+
+.product-page .star-input label:hover,
+.product-page .star-input label:hover ~ label,
+.product-page .star-input input:checked ~ label {
+    color: #e0a100;
+}
+
+.product-page .star-input input:focus-visible + label {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.product-page .star-value {
+    display: block;
+    margin-top: 6px;
+
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.product-page .review-submit {
+    justify-self: start;
+
+    height: 40px;
+    padding: 0 24px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: var(--accent);
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: background 0.15s;
+}
+
+.product-page .review-submit:hover {
+    background: #000000;
+}
+
+/* ---------- Je eigen review ---------- */
+
+.product-page .review {
+    max-width: 560px;
+    padding: 16px 18px;
+
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+
+    background: #ffffff;
+}
+
+.product-page .review:focus {
+    outline: none;
+}
+
+.product-page .review-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 12px;
+}
+
+.product-page .review-name {
+    font-size: 14px;
+}
+
+.product-page .review-badge {
+    padding: 1px 8px;
+
+    border-radius: 999px;
+
+    background: var(--accent);
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.product-page .review-date {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.product-page .review-text {
+    margin-top: 10px;
+    max-width: none;
+
+    color: var(--text);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.product-page .review-delete {
+    margin-top: 14px;
+    padding: 0;
+
+    border: 0;
+    background: none;
+
+    color: var(--text-muted);
+    font-size: 12px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.product-page .review-delete:hover {
+    color: #8a2d2d;
+}
+
+/* ---------- Melding ---------- */
+
+.product-page .review-status {
+    min-height: 20px;
+    margin-top: 14px;
+
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.product-page .review-status.is-error {
+    color: #8a2d2d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-page .star-input label {
+        transition: none;
+    }
+}

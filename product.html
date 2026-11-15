@@ -7,19 +7,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/header.css">
   <link rel="stylesheet" href="assets/css/product.css">
+  <link rel="stylesheet" href="assets/css/reviews.css">
   <link rel="stylesheet" href="assets/css/sale.css">
+  <link rel="stylesheet" href="assets/css/loading.css">
   <script src="assets/js/core/cart-expiry.js"></script>
-  <script src="assets/js/core/products-loader.js" data-then="assets/js/core/sale.js,assets/js/product/product.js"></script>
+  <script src="assets/js/core/products-loader.js" data-then="assets/js/core/sale.js,assets/js/product/product.js,assets/js/product/reviews.js"></script>
 </head>
 <body class="product-page">
 
-  <header>
+  <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
       <a href="index.html" class="nav-link">Home</a>
       <a href="pages/categories.html" class="nav-link" aria-current="page">Shop</a>
       <a href="index.html#about" class="nav-link">About</a>
-      <a href="index.html#help" class="nav-link">Help</a>
+      <a href="pages/help.html" class="nav-link">Help</a>
       <a href="cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
@@ -52,9 +55,8 @@
         <h1 class="info-title" id="product-title">Product Title Placeholder</h1>
         <p class="info-price" id="product-price">€ 99,99</p>
  
-        <div class="info-rating" aria-label="Rated 5 out of 5 stars">
-          <span aria-hidden="true">★★★★★</span>
-        </div>
+        <!-- De beoordeling wordt ingevuld door reviews.js. -->
+        <div class="info-rating" id="product-rating"></div>
  
         <p class="info-desc" id="product-summary">
           A short product summary goes here. Describe the key benefits in a sentence or two so
@@ -119,7 +121,10 @@
         </div>
  
         <div role="tabpanel" class="tab-panel" id="panel-reviews" aria-labelledby="tab-reviews" hidden>
-          <p>No reviews yet. Be the first to review this product.</p>
+          <!-- Reviews: formulier, je eigen review en de samenvatting (reviews.js). -->
+          <div id="reviews">
+            <p>Er zijn nog geen reviews.</p>
+          </div>
         </div>
       </div>
     </section>

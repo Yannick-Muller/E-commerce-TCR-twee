@@ -203,7 +203,8 @@ const startWishlist = () => {
     items.forEach(([id, product]) => listEl.appendChild(createItem(id, product)));
 
     if (countEl) countEl.textContent = String(items.length);
-    if (emptyEl) emptyEl.hidden = items.length > 0;
+    // Bij een laadfout weten we niet wat er op het lijstje staat: toon dan niet "leeg".
+    if (emptyEl) emptyEl.hidden = items.length > 0 || window.PRODUCTS_STATUS === "error";
   }
 
   // ----------------------------------------------------------

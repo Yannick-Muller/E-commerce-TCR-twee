@@ -4,94 +4,183 @@
    met het rood van het favorietenhartje als actiekleur.
    ========================================================= */
  
-/* ---------- Banner ---------- */
- 
+/* ---------- Banner: boodschappenblaadje ---------- */
+
+/* Een papiertje met lijntjes en een rode kantlijn, een gescheurde onderrand
+   en een stukje bewegend rood-geel plakband bovenop. De schaduw komt van
+   filter: drop-shadow, zodat hij ook de gescheurde rand en het plakband volgt. */
 .flash-sale {
+    --paper: #fffbe8;
+    --ink: #2b2b2b;
+
+    position: relative;
+    isolation: isolate;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px 24px;
- 
-    width: 100%;
-    padding: 14px 24px;
- 
-    /* Rood en geel lopen vloeiend in elkaar over en schuiven van links
-       naar rechts (de patroonbreedte staat in background-size). */
-    background-color: #d81b48;
-    background-image: linear-gradient(90deg, #d81b48, #ffc400, #d81b48);
-    background-size: 400px 100%;
-    background-repeat: repeat-x;
-    color: #ffffff;
+    gap: 12px 24px;
 
-    animation: flash-sale-tape 6s linear infinite;
- 
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+    width: min(calc(100% - 32px), 860px);
+    margin: 34px auto 40px;
+    padding: 26px 32px 24px 44px;
+
+    color: var(--ink);
+    font-family: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", cursive;
+
+    /* Kantlijn links en blauwe lijntjes. */
+    background-color: var(--paper);
+    background-image:
+        linear-gradient(90deg,
+            transparent 24px,
+            rgba(216, 27, 72, 0.4) 24px,
+            rgba(216, 27, 72, 0.4) 26px,
+            transparent 26px),
+        repeating-linear-gradient(to bottom,
+            transparent 0,
+            transparent 27px,
+            rgba(70, 130, 180, 0.28) 27px,
+            rgba(70, 130, 180, 0.28) 28px);
+    background-position: 0 0, 0 12px;
+
+    transform: rotate(-0.6deg);
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.22));
 }
- 
+
 .flash-sale[hidden],
 .flash-sale [hidden] {
     display: none;
 }
- 
+
+/* Gescheurde onderrand (tandjes naar beneden). */
+.flash-sale::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 8px;
+
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 0h16L8 8z' fill='%23fffbe8'/%3E%3C/svg%3E") repeat-x left top / 16px 8px;
+}
+
+/* Plakband: het rood-gele patroon schuift van links naar rechts. */
+.flash-sale::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    z-index: 1;
+
+    width: 130px;
+    height: 30px;
+    margin-left: -65px;
+
+    background-image: linear-gradient(90deg, #d81b48, #ffc400, #d81b48);
+    background-size: 260px 100%;
+    background-repeat: repeat-x;
+    opacity: 0.92;
+
+    /* Rafelige uiteinden. */
+    clip-path: polygon(0 0, 4% 15%, 0 30%, 4% 45%, 0 60%, 4% 75%, 0 100%,
+                       100% 100%, 96% 85%, 100% 70%, 96% 55%, 100% 40%, 96% 25%, 100% 0);
+
+    transform: rotate(-3deg);
+    animation: flash-sale-tape 5s linear infinite;
+}
+
+/* Het patroon schuift precies één patroonbreedte op, dus de lus is naadloos. */
+@keyframes flash-sale-tape {
+    from { background-position: 0 0; }
+    to   { background-position: 260px 0; }
+}
+
+/* "Flash sale" in rode stift, met een kronkellijntje eronder. */
 .flash-sale__title {
-    font-size: 16px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 700;
+    color: #d81b48;
+
+    text-decoration: underline wavy #d81b48;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
 }
- 
+
 .flash-sale__label {
-    font-size: 13px;
-    color: #d9d9d9;
+    font-size: 18px;
+    color: var(--ink);
 }
- 
+
 .flash-sale__timer {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
- 
+
+/* De cijfers staan op kaartjes met een stempelschaduw. */
 .flash-sale__unit {
-    min-width: 54px;
+    min-width: 58px;
     padding: 6px 8px;
- 
+
+    border: 2px solid var(--ink);
     border-radius: 6px;
- 
+
     background-color: #ffffff;
     color: #141414;
- 
+    box-shadow: 3px 3px 0 var(--ink);
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
     text-align: center;
     line-height: 1.1;
 }
- 
+
+.flash-sale__unit:nth-child(odd)  { transform: rotate(-2deg); }
+.flash-sale__unit:nth-child(even) { transform: rotate(1.5deg); }
+
 .flash-sale__unit strong {
     display: block;
-    font-size: 20px;
+    font-size: 22px;
     font-variant-numeric: tabular-nums;
 }
- 
+
 .flash-sale__unit span {
     font-size: 10px;
     text-transform: uppercase;
     color: #6b6b6b;
 }
- 
+
 /* Laatste uur: rode cijfers. */
 .flash-sale.is-urgent .flash-sale__unit strong {
     color: #d81b48;
 }
- 
-/* Afgelopen: de banner wordt grijs en toont een melding. */
+
+/* Afgelopen: grijs papiertje, recht, zonder plakband. */
 .flash-sale.is-ended {
-    background-color: #e6e6e6;
+    --paper: #eeeeee;
+
     background-image: none;
-    animation: none;
     color: #6b6b6b;
+    transform: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
- 
+
+.flash-sale.is-ended::before {
+    display: none;
+}
+
+.flash-sale.is-ended::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 0h16L8 8z' fill='%23eeeeee'/%3E%3C/svg%3E");
+}
+
+.flash-sale.is-ended .flash-sale__title {
+    color: inherit;
+    text-decoration: none;
+}
+
 .flash-sale__ended {
-    font-size: 14px;
+    font-size: 16px;
 }
- 
+
 /* ---------- Prijzen en labels ---------- */
  
 .price-row {
@@ -153,7 +242,8 @@
  
 @media (max-width: 700px) {
     .flash-sale {
-        padding: 12px 16px;
+        padding: 22px 16px 20px 36px;
+        margin: 30px auto 36px;
     }
  
     .flash-sale__unit {
@@ -177,38 +267,9 @@
     margin-left: 10px;
 }
 
-/* ---------- Bewegende rood-gele band ---------- */
-
-/* Het patroon schuift precies één patroonbreedte op, dus de lus is naadloos. */
-@keyframes flash-sale-tape {
-    from { background-position: 0 0; }
-    to   { background-position: 400px 0; }
-}
-
-/* Witte tekst op geel is slecht leesbaar: titel en label krijgen een donker
-   label, de cijfers staan al in witte vakjes. */
-.flash-sale__title,
-.flash-sale__label {
-    padding: 4px 12px;
-    border-radius: 999px;
-    background-color: #2b2b2b;
-    color: #ffffff;
-}
-
-.flash-sale__unit {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-/* Afgelopen: geen donker label meer. */
-.flash-sale.is-ended .flash-sale__title {
-    padding: 0;
-    background: none;
-    color: inherit;
-}
-
-/* Geen beweging voor wie dat liever niet heeft: de kleurovergang blijft staan. */
+/* Geen beweging voor wie dat liever niet heeft: het plakband blijft stilstaan. */
 @media (prefers-reduced-motion: reduce) {
-    .flash-sale {
+    .flash-sale::before {
         animation: none;
     }
 }

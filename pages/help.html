@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Help | Webshop</title>
+
+    <!-- Header (navigatie + zoekbalk), op alle pagina's hetzelfde. -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <!-- Vormgeving van de helppagina. -->
+    <link rel="stylesheet" href="../assets/css/help.css" />
+
+    <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan. -->
+    <script src="../assets/js/core/cart-expiry.js"></script>
+
+    <!-- Zoeken in de vragen en de winkelwagenteller. -->
+    <script src="../assets/js/help/help.js" defer></script>
+  </head>
+
+  <body class="help-page">
+    <!-- =====================================================
+         HEADER (op alle pagina's hetzelfde, zie assets/css/header.css)
+         ===================================================== -->
+
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="categories.html" class="nav-link">Shop</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="help.html" class="nav-link" aria-current="page">Help</a>
+        <a href="../cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </header>
+
+    <main class="help-main">
+      <h1 class="help-title">Veelgestelde vragen</h1>
+
+      <p class="help-intro">
+        Hier vind je antwoorden op de vragen die we het vaakst krijgen. Zoek op een
+        woord of klik op een vraag om het antwoord te lezen.
+      </p>
+
+      <!-- Zoekbalk (zonder icoon) -->
+      <section class="search-section">
+        <div class="search-box">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Zoek in de vragen..."
+            aria-label="Zoek in de veelgestelde vragen"
+          />
+        </div>
+      </section>
+
+      <!-- =================================================
+           ZOEKEN EN PRODUCTEN
+           ================================================= -->
+
+      <section class="faq-group" aria-labelledby="faq-zoeken">
+        <h2 id="faq-zoeken">Zoeken en producten</h2>
+
+        <details class="faq-item" id="product-vinden">
+          <summary>Hoe vind ik een product?</summary>
+          <div class="faq-answer">
+            <p>
+              Typ in de zoekbalk op de homepage of de Shop-pagina. De producten worden
+              gefilterd terwijl je typt.
+            </p>
+            <p>
+              Op de homepage kies je daarnaast een categorie. Op de Shop-pagina gebruik
+              je het categoriefilter in de zijbalk. Met "Toon alles" (homepage) of
+              "Alle producten" (Shop-pagina) zie je weer alles.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="productinfo">
+          <summary>Waar vind ik meer informatie over een product?</summary>
+          <div class="faq-answer">
+            <p>
+              Klik op de foto of de naam van het product. Op de productpagina vind je
+              de beschrijving, de kenmerken en de maten. Onderaan staan andere producten
+              die je misschien ook leuk vindt.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="voorraad">
+          <summary>Wat betekent het getal bij "Voorraad"?</summary>
+          <div class="faq-answer">
+            <p>
+              Dat is het aantal stuks dat we nog hebben. Staat er een laag getal, dan
+              kun je er beter niet te lang mee wachten.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- =================================================
+           WINKELWAGEN EN VERLANGLIJSTJE
+           ================================================= -->
+
+      <section class="faq-group" aria-labelledby="faq-winkelwagen">
+        <h2 id="faq-winkelwagen">Winkelwagen en verlanglijstje</h2>
+
+        <details class="faq-item" id="winkelwagen-toevoegen">
+          <summary>Hoe zet ik een product in mijn winkelwagen?</summary>
+          <div class="faq-answer">
+            <p>
+              Klik bij het product op "In winkelwagen". Op de productpagina kies je
+              eerst je maat en het aantal en klik je daarna op "Add to Cart".
+            </p>
+            <p>
+              Op de homepage verwijder je een product weer door nog eens op de knop te
+              klikken (daar staat dan "Toegevoegd"). Je winkelwagen open je met "Cart"
+              bovenaan de pagina.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="aantal-aanpassen">
+          <summary>Kan ik het aantal aanpassen of een product verwijderen?</summary>
+          <div class="faq-answer">
+            <p>
+              Ja, op de winkelwagenpagina. Met + en − pas je het aantal aan (maximaal 10
+              stuks per product). Met "Verwijderen" haal je een product weg en met
+              "Winkelwagen legen" begin je opnieuw.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="winkelwagen-bewaard">
+          <summary>Hoe lang blijven producten in mijn winkelwagen?</summary>
+          <div class="faq-answer">
+            <p>
+              <span data-cart-days>3</span> dagen. Producten die je in die tijd niet
+              koopt, worden automatisch uit je winkelwagen gehaald. In je winkelwagen
+              zie je bij elk product hoe lang het nog blijft staan en je krijgt een
+              melding als er iets is verwijderd.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="winkelwagen-leeg">
+          <summary>Mijn winkelwagen is leeg, maar ik had iets toegevoegd. Hoe kan dat?</summary>
+          <div class="faq-answer">
+            <p>Dat kan een paar oorzaken hebben:</p>
+            <ul>
+              <li>De producten stonden langer dan de bewaartijd in je winkelwagen.</li>
+              <li>
+                Je winkelwagen wordt bewaard in je browser. Gebruik je een ander
+                apparaat of een andere browser, dan zie je hem daar niet.
+              </li>
+              <li>
+                Je hebt je browsergegevens gewist of een privévenster gebruikt.
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item" id="verlanglijstje">
+          <summary>Hoe werkt het verlanglijstje?</summary>
+          <div class="faq-answer">
+            <p>
+              Klik op het hartje rechtsboven op de foto van een product om het te
+              bewaren. Je vindt al je favorieten terug onderaan de winkelwagenpagina bij
+              "Verlanglijstje". Daar zet je ze met één klik in je winkelwagen of haal je
+              ze weer van je lijstje.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- =================================================
+           FLASH SALE
+           ================================================= -->
+
+      <section class="faq-group" aria-labelledby="faq-sale">
+        <h2 id="faq-sale">Flash sale</h2>
+
+        <details class="faq-item" id="flash-sale-uitleg">
+          <summary>Hoe werkt de flash sale?</summary>
+          <div class="faq-answer">
+            <p>
+              Tijdens de flash sale hebben bepaalde producten een lagere prijs. Je ziet
+              dan de actieprijs in het rood, de oude prijs doorgestreept en een label met
+              het kortingspercentage op de foto.
+            </p>
+            <p>
+              Op het briefje bovenaan de pagina tellen we af hoe lang de sale nog duurt.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="sale-voorbij">
+          <summary>Wat gebeurt er met mijn winkelwagen als de sale afloopt?</summary>
+          <div class="faq-answer">
+            <p>
+              Zodra de sale voorbij is, gaan alle prijzen automatisch terug naar de
+              normale prijs, ook die van producten die al in je winkelwagen staan. Het
+              briefje bovenaan laat dan zien dat de sale is afgelopen.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- =================================================
+           BETALEN, BEZORGEN EN RETOURNEREN
+
+           LET OP: de antwoorden over bezorging en retourneren zijn
+           voorbeeldteksten. Pas ze aan op de afspraken van de echte winkel.
+           ================================================= -->
+
+      <section class="faq-group" aria-labelledby="faq-bestellen">
+        <h2 id="faq-bestellen">Betalen, bezorgen en retourneren</h2>
+
+        <details class="faq-item" id="afrekenen">
+          <summary>Kan ik al afrekenen en welke betaalmethoden zijn er?</summary>
+          <div class="faq-answer">
+            <p>
+              We werken nog aan de afrekenpagina, daarom werkt de knop "Afrekenen" in de
+              winkelwagen nog niet. Je winkelwagen en verlanglijstje blijven wel bewaard.
+              Zodra afrekenen kan, lees je hier welke betaalmethoden we aanbieden.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="bezorging">
+          <summary>Hoe lang duurt de bezorging?</summary>
+          <div class="faq-answer">
+            <p>
+              Een bestelling wordt meestal binnen 1 tot 3 werkdagen bezorgd. Zodra je
+              pakket onderweg is, sturen we je een bericht.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="retourneren">
+          <summary>Kan ik iets terugsturen?</summary>
+          <div class="faq-answer">
+            <p>
+              Ja. Je hebt 14 dagen na ontvangst om je bestelling zonder opgaaf van
+              reden terug te sturen. Het product moet dan ongebruikt zijn en in de
+              originele verpakking zitten.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" id="geld-terug">
+          <summary>Wanneer krijg ik mijn geld terug?</summary>
+          <div class="faq-answer">
+            <p>
+              Binnen 14 dagen nadat wij je retour hebben ontvangen, op dezelfde manier
+              waarmee je hebt betaald.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Wordt getoond als zoeken niets oplevert (help.js). -->
+      <p class="help-empty" id="faq-empty" hidden>
+        Geen vragen gevonden. Probeer een ander woord, of stel je vraag via de mail
+        hieronder.
+      </p>
+
+      <!-- =================================================
+           CONTACT
+
+           LET OP: dit e-mailadres is een voorbeeld, vervang het door een echt adres.
+           ================================================= -->
+
+      <section class="help-contact">
+        <h2>Staat je vraag er niet bij?</h2>
+        <p>
+          Mail ons via
+          <a href="mailto:klantenservice@webshop.example">klantenservice@webshop.E-commerce</a>
+          en we helpen je graag verder.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
