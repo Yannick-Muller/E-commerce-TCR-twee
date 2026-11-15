@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>About | Webshop</title>
+
+    <!-- Header (navigatie + zoekbalk), op alle pagina's hetzelfde. -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <!-- Vormgeving van de aboutpagina. -->
+    <link rel="stylesheet" href="../assets/css/about.css" />
+
+    <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan. -->
+    <script src="../assets/js/core/cart-expiry.js"></script>
+
+    <!-- Winkelwagenteller in de navigatie. -->
+    <script src="../assets/js/core/cart-count.js" defer></script>
+  </head>
+
+  <body class="about-page">
+
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="categories.html" class="nav-link">Shop</a>
+        <a href="about.html" class="nav-link" aria-current="page">About</a>
+        <a href="help.html" class="nav-link">Help</a>
+        <a href="../cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="about-hero">
+        <div class="about-hero-inner">
+          <h1>Over deze webshop</h1>
+
+          <p>
+            Deze webshop is een project van drie makers: Yannick, Baray en Nikan.
+            We hebben samen een kleine webshop gebouwd met schoenen, kleding,
+            accessoires en elektronica.
+          </p>
+
+          <p>
+            Het idee was om te laten zien hoe online winkelen werkt, van een
+            product zoeken tot je winkelwagen vullen.
+          </p>
+        </div>
+      </section>
+
+      <section class="about-section about-block" aria-labelledby="about-features">
+        <h2 id="about-features">Wat kun je hier doen?</h2>
+
+        <ul class="feature-grid">
+          <li class="feature">
+            <h3>Zoeken en filteren</h3>
+            <p>
+              Zoek op naam of kies een categorie. Zo zie je alleen de producten die
+              je interesseren.
+            </p>
+          </li>
+
+          <li class="feature">
+            <h3>Productpagina's</h3>
+            <p>
+              Bekijk de foto's, de beschrijving en de kenmerken van een product en
+              kies je maat.
+            </p>
+          </li>
+
+          <li class="feature">
+            <h3>Reviews</h3>
+            <p>
+              Geef een product sterren, schrijf er een review bij en verwijder die
+              weer als je wilt.
+            </p>
+          </li>
+
+          <li class="feature">
+            <h3>Verlanglijstje</h3>
+            <p>
+              Bewaar producten met het hartje en zet ze later met één klik in je
+              winkelwagen.
+            </p>
+          </li>
+
+          <li class="feature">
+            <h3>Winkelwagen</h3>
+            <p>
+              Pas het aantal aan of haal iets weg. Je winkelwagen ruimt zichzelf op
+              als je er te lang niets mee doet.
+            </p>
+          </li>
+
+          <li class="feature">
+            <h3>Flash sale</h3>
+            <p>
+              Tijdelijke kortingen met een aftelklok, zodat je ziet hoe lang je nog
+              hebt.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="about-section about-block" aria-labelledby="about-team">
+        <h2 id="about-team">Het team</h2>
+
+        <p class="about-lead">
+          Dit project is gemaakt door:
+        </p>
+
+        <ul class="team-grid">
+          <li class="member">
+            <div class="member-avatar" aria-hidden="true">Y</div>
+            <h3>Yannick</h3>
+            <p class="member-role">Maker van deze webshop</p>
+          </li>
+
+          <li class="member">
+            <div class="member-avatar" aria-hidden="true">B</div>
+            <h3>Baray</h3>
+            <p class="member-role">Maker van deze webshop</p>
+          </li>
+
+          <li class="member">
+            <div class="member-avatar" aria-hidden="true">N</div>
+            <h3>Nikan</h3>
+            <p class="member-role">Maker van deze webshop</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- =================================================
+           HOE IS HET GEMAAKT
+           ================================================= -->
+
+      <section class="about-section about-block" aria-labelledby="about-tech">
+        <h2 id="about-tech">Hoe is het gemaakt?</h2>
+
+        <p class="about-lead">
+          De webshop is gebouwd met gewone HTML, CSS en JavaScript, zonder
+          frameworks. Alle producten staan in één bestand en worden opgehaald zodra
+          je een pagina opent. Je winkelwagen, favorieten en reviews worden in je
+          eigen browser bewaard, dus je hebt geen account nodig.
+        </p>
+
+        <p class="about-note">
+          Let op: dit is een project en geen echte winkel. Je kunt dus niets
+          echt bestellen of afrekenen.
+        </p>
+      </section>
+
+      <section class="about-section about-actions" aria-label="Verder kijken">
+        <a class="about-button" href="categories.html">Naar de shop</a>
+        <a class="about-button is-secondary" href="help.html">Veelgestelde vragen</a>
+      </section>
+    </main>
+  </body>
+</html>

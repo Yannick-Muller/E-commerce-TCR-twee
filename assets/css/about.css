@@ -1,0 +1,269 @@
+/* =========================================================
+   ABOUTPAGINA (pages/about.html): over de webshop en het team
+   Alle regels staan onder .about-page. De header komt uit header.css.
+   ========================================================= */
+
+.about-page {
+    margin: 0;
+
+    background-color: #ffffff;
+    color: #141414;
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+    box-sizing: border-box;
+}
+
+.about-page h1,
+.about-page h2,
+.about-page h3,
+.about-page p,
+.about-page ul {
+    margin: 0;
+}
+
+.about-page .about-section {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---------- Intro (rood met goud, zoals de header) ---------- */
+
+.about-page .about-hero {
+    padding: 56px 24px 60px;
+
+    background: linear-gradient(180deg, #b80f2c 0%, #940b23 100%);
+    border-bottom: 3px solid #f5c542;
+    color: #fff3c4;
+
+    text-align: center;
+}
+
+.about-page .about-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.about-page .about-hero h1 {
+    margin-bottom: 16px;
+
+    color: #ffd54a;
+    font-size: 38px;
+    line-height: 1.2;
+}
+
+.about-page .about-hero p {
+    font-size: 17px;
+}
+
+.about-page .about-hero p + p {
+    margin-top: 12px;
+}
+
+/* ---------- Kopjes ---------- */
+
+.about-page .about-block {
+    padding-top: 56px;
+}
+
+.about-page .about-block h2 {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+
+    border-bottom: 3px solid #f5c542;
+
+    font-size: 24px;
+}
+
+.about-page .about-lead {
+    max-width: 72ch;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+/* ---------- Wat kun je hier doen ---------- */
+
+.about-page .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.about-page .feature {
+    padding: 16px 18px;
+
+    border: 1px solid #e2e2e2;
+    border-left: 4px solid #b80f2c;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+}
+
+.about-page .feature h3 {
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.about-page .feature p {
+    color: #555555;
+    font-size: 14px;
+}
+
+/* ---------- Team ---------- */
+
+.about-page .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.about-page .member {
+    padding: 28px 20px;
+
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-page .member-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 14px;
+
+    border: 3px solid #f5c542;
+    border-radius: 50%;
+
+    background: linear-gradient(180deg, #b80f2c 0%, #940b23 100%);
+    color: #ffd54a;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.about-page .member h3 {
+    font-size: 18px;
+}
+
+.about-page .member p {
+    margin-top: 2px;
+    color: #555555;
+    font-size: 14px;
+}
+
+/* ---------- Hoe is het gemaakt ---------- */
+
+.about-page .about-note {
+    max-width: 72ch;
+    margin-top: 16px;
+    padding: 14px 18px;
+
+    border: 1px dashed #b5b5b5;
+    border-radius: 8px;
+
+    color: #555555;
+    font-size: 14px;
+}
+
+/* ---------- Knoppen onderaan ---------- */
+
+.about-page .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    padding-top: 56px;
+    padding-bottom: 72px;
+}
+
+.about-page .about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 44px;
+    padding: 0 26px;
+
+    border: 2px solid #b80f2c;
+    border-radius: 999px;
+
+    background-color: #b80f2c;
+    color: #ffd54a;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.about-page .about-button:hover {
+    background-color: #940b23;
+}
+
+.about-page .about-button.is-secondary {
+    background-color: transparent;
+    color: #b80f2c;
+}
+
+.about-page .about-button.is-secondary:hover {
+    background-color: #b80f2c;
+    color: #ffd54a;
+}
+
+.about-page .about-button:focus-visible {
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+    .about-page .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .about-page .about-hero {
+        padding: 40px 16px 44px;
+    }
+
+    .about-page .about-hero h1 {
+        font-size: 30px;
+    }
+
+    .about-page .about-section {
+        padding: 0 16px;
+    }
+
+    .about-page .about-block {
+        padding-top: 40px;
+    }
+
+    .about-page .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-page .about-button {
+        transition: none;
+    }
+}
