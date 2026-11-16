@@ -7,6 +7,7 @@ let savedFavorites = [];
 try {
   const storedData = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
 
+
   if (Array.isArray(storedData)) {
     savedFavorites = storedData.filter((id) => {
       return typeof id === "string";
@@ -17,6 +18,8 @@ try {
 }
 
 const favorites = new Set(savedFavorites);
+
+
 
 const favoriteCards = document.querySelectorAll(
   ".product-card[data-product-id]",
