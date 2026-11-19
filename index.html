@@ -7,39 +7,30 @@
 
     <title>Webshop</title>
 
-    <!-- Bestaande vormgeving behouden. -->
     <link rel="stylesheet" href="assets/css/style-nikan.css" />
 
-    <!-- Header (navigatie + zoekbalk), op alle pagina's hetzelfde. -->
     <link rel="stylesheet" href="assets/css/header.css" />
 
-    <!-- Nieuwe vormgeving voor favorieten. -->
     <link rel="stylesheet" href="assets/css/favorites.css" />
 
-    <!-- Flash sale: countdown en kortingsprijzen. -->
     <link rel="stylesheet" href="assets/css/sale.css" />
 
-    <!-- Loading state en foutmelding bij het ophalen van producten. -->
     <link rel="stylesheet" href="assets/css/loading.css" />
 
-    <!-- Verwijdert producten die langer dan 3 dagen in de winkelwagen staan.
-         Moet vóór de andere scripts geladen worden. -->
     <script src="assets/js/core/cart-expiry.js"></script>
   </head>
 
   <body>
     <div class="app">
-      <!-- =====================================================
-           HEADER (op alle pagina's hetzelfde, zie assets/css/header.css)
-           ===================================================== -->
-
-<header class="site-header">
+      <header class="site-header">
         <nav class="navbar" aria-label="Main navigation">
           <a href="index.html" class="nav-link" aria-current="page">Home</a>
           <a href="pages/categories.html" class="nav-link">Shop</a>
           <a href="pages/about.html" class="nav-link">About</a>
           <a href="pages/help.html" class="nav-link">Help</a>
-          <a href="cart.html" class="nav-link nav-cart">Cart (<span id="cart-count">0</span>)</a>
+          <a href="cart.html" class="nav-link nav-cart"
+            >Cart (<span id="cart-count">0</span>)</a
+          >
         </nav>
 
         <!-- Countdown van de flash sale (wordt gevuld door sale.js). -->
@@ -164,9 +155,6 @@
       </main>
     </div>
 
-    <!-- Haalt products.json op met fetch() en laadt daarna de scripts
-         hieronder in deze volgorde: flash sale, productkaarten,
-         zoeken/filteren/winkelwagen en favorieten. -->
     <script
       src="assets/js/core/products-loader.js"
       data-then="assets/js/core/sale.js,assets/js/home/home-products.js,assets/js/home/script.js,assets/js/core/favorites.js"
